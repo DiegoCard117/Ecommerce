@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <>
-      <header>
+      <header id='header'>
         <nav>
           <div className='logo'>
             <h1 className='logo-title'>Ecommerce</h1>
