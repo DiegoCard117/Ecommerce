@@ -6,9 +6,16 @@ import graphic from '../img/3050.png'
 import Image from "next/image"
 import { useEffect, useState } from 'react';
 
+interface Products {
+  id: number,
+  price: string,
+  name: string,
+  img: string
+}
+
 export default function Body() {
 
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Products[]>([]);
 
   useEffect(()=>{
     products()
