@@ -45,7 +45,6 @@ export default function Body() {
             alt=''
           />
           <span className='name-product'>{data.name}</span>
-          <span className='name-product'>{data.model}</span>
           <span className='price-red'>
             <span>de </span><span></span><span> por:</span>
           </span>

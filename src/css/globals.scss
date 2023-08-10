@@ -133,11 +133,15 @@ aside {
     padding: 15px;
     position: relative;
     width: 90%;
-    height: 420px;
+    height: 450px;
     box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.19);
 
     .img-product {
       z-index: -1;
+    }
+
+    .name-product {
+      font-size: 14px;
     }
 
     .price-red {
@@ -163,6 +167,8 @@ aside {
     }
 
     .span-parcel {
+      position: absolute;
+      bottom: 10px;
       width: 50%;
       padding-top: 10px;
       font-size: 10px;
