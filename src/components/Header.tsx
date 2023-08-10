@@ -2,6 +2,7 @@
 import menu from '../img/menu.svg'
 import cart from '../img/cart.svg'
 import favorites from '../img/heart.svg'
+import profile from '../img/profile.svg'
 
 import gpu from '../img/gpu.svg'
 import mouse from '../img/mouse.svg'
@@ -50,6 +51,12 @@ export default function Header() {
           <div className='logo'>
             <h1 className='logo-title'>Ecommerce</h1>
             <div className='btn-menu-top'>
+            <button className='favorites'>
+                <Image
+                  src={profile}
+                  alt='favoritos'
+                />
+              </button>
               <button className='favorites'>
                 <Image
                   src={favorites}

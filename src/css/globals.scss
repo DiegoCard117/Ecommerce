@@ -7,8 +7,22 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+body {
+  display: grid;
+  grid-template-areas:
+   'header header'
+   'aside section'
+   'footer footer'
+  ;
+}
+
 button {
   border: none;
+}
+
+span {
+  z-index: -1;
 }
 
 :root {
@@ -24,6 +38,8 @@ button {
 }
 
 header {
+
+  grid-area: header;
   background: var(--white);
   padding: 20px;
   nav {
@@ -58,15 +74,18 @@ header {
   }
 }
 
+
+
 aside {
+  grid-area: aside;
   display: flex;
   flex-direction: row;
 
   .menu-left {
-    position: sticky;
+    z-index: 99;
     background: var(--black);
     width: 90px;
-    height: 100%;
+    height: 750px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -78,9 +97,12 @@ aside {
   }
 
   .open {
+    position: absolute;
+    left: 90px;
     background: var(--black);
     color: var(--white);
     width: calc(100% - 90px);
+    height: 750px;
     padding: 5px;
 
     ul {
@@ -90,5 +112,61 @@ aside {
         font-size: 16px;
       }
     }
+  }
+}
+
+.body-products {
+  display: grid;
+  row-gap: 50px;
+  grid-area: section;
+  place-items: center;
+
+  .top-img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .box-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    width: 90%;
+    height: 420px;
+    box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.19);
+
+    .img-product {
+      z-index: -1;
+    }
+
+    .price-red {
+      position: relative;
+      right: 25%;
+      span {
+        font-size: 10px;
+        color: var(--red);
+      }
+    }
+
+    .green-price-product {
+      span {
+        position: relative;
+        right: 65%;
+        display: block;
+        color: var(--green);
+      }
+
+      .green-span{
+        font-size: 10px;
+      }
+    }
+
+    .span-parcel {
+      width: 50%;
+      padding-top: 10px;
+      font-size: 10px;
+    }
+
   }
 }
