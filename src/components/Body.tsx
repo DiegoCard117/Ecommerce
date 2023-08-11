@@ -1,14 +1,13 @@
 'use client'
 
 import TopImg from '../img/top-img.svg'
-import graphic from '../img/3050.png'
 
 import Image from "next/image"
 import { useEffect, useState } from 'react';
 
 interface Products {
   id: number,
-  price: string,
+  price: number,
   name: string,
   img: string
 }
@@ -27,7 +26,7 @@ export default function Body() {
       const response = await fetch(url)
       const data = await response.json()
       setData(data)
-      console.log(data[0].id)
+      console.log(data)
     } catch(error) {
       console.error('Erro encontrado', error)
     }
@@ -57,10 +56,10 @@ export default function Body() {
           </span>
           <span className='green-price-product'>
             <span className='green-span'>á vista </span>
-            <span className='price-green'>{data.price}</span>
+            <span className='price-green'>R${data.price}</span>
           </span>
           <span className='span-parcel'>
-            em até 12x de 159,99 sem juros no cartão
+            em até 12x de R${((data.price / 12) * 1.2).toFixed(2)} sem juros no cartão
           </span>
         </div>
         ))}

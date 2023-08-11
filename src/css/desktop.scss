@@ -1,0 +1,60 @@
+:root {
+  --secondary: #384359;
+  --grey: #1E2128;
+  --white: #F1F2F5;
+  --black: #0C0C0C;
+  --red: #FF0000;
+  --green: #008000;
+}
+
+
+.header-desktop {
+  grid-area: header;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  #search {
+    border: none;
+    border-radius: 5px;
+    background: var(--black);
+
+    width: 40%;
+    height: 40px;
+    background: var(--black) url(../img/search-icon.svg) no-repeat right;
+  }
+
+  button {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    border-radius: 5px;
+
+    p {
+      margin:0px 10px;
+    }
+
+    .quantidade-favoritos, .quantidade-compra {
+      height: 20px;
+      width: 20px;
+      border-radius: 5px;
+    }
+
+    .quantidade-compra {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .quantidade-favoritos {
+      background: var(--white);
+      color: var(--black);
+    }
+
+  }
+
+  .profile,  .contato,  .favoritos {
+    background: var(--black);
+    color: var(--white);
+  }
+}

@@ -3,6 +3,7 @@ import menu from '../img/menu.svg'
 import cart from '../img/cart.svg'
 import favorites from '../img/heart.svg'
 import profile from '../img/profile.svg'
+import interrogaçao from '../img/interrogaçao.svg'
 
 import gpu from '../img/gpu.svg'
 import mouse from '../img/mouse.svg'
@@ -16,7 +17,7 @@ import console from '../img/console.svg'
 import router from '../img/router.svg'
 
 import Image from 'next/image'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const imagens = [
   {id:'1', img: gpu},
@@ -36,6 +37,29 @@ export default function Header() {
   const [MenuClass, setMenuClass] = useState('close')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(()=> {
+    const handleResize = () => {
+      if (window.innerWidth < 1200) {
+        setShouldRender(true)
+      } else {
+        setShouldRender(false)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  if(!shouldRender) {
+    return null
+  }
+
   const updateMenu = () => {
     const aside = document.querySelector('aside');
     if (aside) {
@@ -46,28 +70,39 @@ export default function Header() {
 
   return (
     <>
-      <header id='header'>
+      <header id='header responsivo'>
         <nav>
           <div className='logo'>
             <h1 className='logo-title'>Ecommerce</h1>
             <div className='btn-menu-top'>
-            <button className='favorites'>
+              <button className='favorites'>
                 <Image
                   src={profile}
                   alt='favoritos'
                 />
+                <span>Minha Conta</span>
+              </button>
+              <button className='interrogaçao'>
+                <Image
+                  src={interrogaçao}
+                  alt='interrogaçao'
+                />
+                <span>Fale Conosco</span>
               </button>
               <button className='favorites'>
                 <Image
                   src={favorites}
                   alt='favoritos'
                 />
+                <span>Favoritos</span>
               </button>
               <button className='cart'>
               <Image
                   src={cart}
                   alt='favoritos'
                 />
+                <span>Carrinho</span>
+                <div></div>
               </button>
             </div>
           </div>
@@ -77,6 +112,7 @@ export default function Header() {
                 src={menu}
                 alt='menu'
               />
+
             </button>
             <input type="text" id="search" className='search'/>
           </div>

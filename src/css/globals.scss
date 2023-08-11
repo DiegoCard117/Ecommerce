@@ -58,6 +58,15 @@ header {
         font-size: 24px;
         font-weight: 400;
       }
+
+      button {
+        img {
+          mix-blend-mode: multiply;
+        }
+        span {
+          display: none;
+        }
+      }
     }
 
     .menu-bottom {
@@ -292,3 +301,4 @@ footer {
   }
 
 }
+
