@@ -15,6 +15,7 @@ interface SearchProviderProps {
   children: ReactNode;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const SearchContext = createContext<ContextData | any>(undefined);
 
 const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
