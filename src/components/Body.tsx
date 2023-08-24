@@ -34,7 +34,7 @@ export default function Body() {
                 width={200}
                 height={200}
                 className='img-product'
-                src={product.thumbnail.replace(/\w\.jpg/gi, 'W.jpg')}
+                src={product.thumbnail.replace(/http:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
                 alt=''
                 priority
               />
