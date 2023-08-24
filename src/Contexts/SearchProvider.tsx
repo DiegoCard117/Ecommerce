@@ -2,9 +2,27 @@
 
 import React, { useState, ReactNode, createContext } from "react";
 
+interface ProductProps {
+  thumbnail: string;
+  id: number;
+  title: string;
+  price: number;
+  original_price: number;
+}
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  original_price: number;
+  thumbnail: string;
+  products : Array<ProductProps>
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+}
+
 interface ContextData {
-  products: string[];
-  setProducts: React.Dispatch<React.SetStateAction<string[]>>;
+  products: Product[];
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   cartItems: string[];
   setCartItems: React.Dispatch<React.SetStateAction<string[]>>;
   favorites: string[];
@@ -15,11 +33,10 @@ interface SearchProviderProps {
   children: ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const SearchContext = createContext<ContextData | any>(undefined);
+export const SearchContext = createContext<ContextData | Product>({} as Product);
 
 const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
-  const [products, setProducts] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<string[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
 

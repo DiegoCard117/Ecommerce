@@ -8,17 +8,9 @@ import { useContext, useEffect } from 'react';
 import { SearchContext } from '@/Contexts/SearchProvider';
 import formatCurrency from '@/utils/formatCurrency';
 
-interface ProductProps {
-  id : number,
-  title: string,
-  price: number,
-  original_price : number,
-  thumbnail: string
-}
-
 export default function Body() {
 
-  const {products, setProducts} = useContext(SearchContext)
+  const {products , setProducts} = useContext(SearchContext)
 
   useEffect(() => {
     fetchProducts('iphone').then((response) => {
@@ -34,7 +26,7 @@ export default function Body() {
           src={TopImg}
           alt=''
         />
-        {products.slice(0 , 16).map((products: ProductProps) => (
+        {products.slice(0 , 16).map((products) => (
           <div className='box-products' key={products.id}>
           <Image
             loader={({src}) => src}
