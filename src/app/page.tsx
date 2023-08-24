@@ -1,17 +1,15 @@
 import '../css/globals.scss'
 import '../css/desktop.scss'
-import Header from '@/components/Header';
-import Body from '@/components/Body';
-import Footer from '@/components/Footer';
-import HeaderDesktop from '@/components/HeaderDesktop';
+import Home from '@/pages/Home';
 
-export default function Home() {
+import SearchProvider from '@/Contexts/SearchProvider';
+
+export default function App() {
   return (
     <>
-      <Header/>
-      <HeaderDesktop/>
-      <Body/>
-      <Footer/>
+      <SearchProvider>
+        <Home/>
+      </SearchProvider>
     </>
   )
 }

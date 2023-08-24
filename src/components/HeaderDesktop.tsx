@@ -1,16 +1,22 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 
 import profile from '../img/profile-desktop.svg'
 import oque from '../img/interrogaçao-desktop.svg'
 import heart from '../img/heart-desktop.svg'
 import cart from '../img/cart-desktop.svg'
+import { SearchContext } from "@/Contexts/SearchProvider";
+import fetchProducts from "@/Api/fetchProducts";
 
 export default function HeaderDesktop() {
 
   const [shouldRender, setShouldRender] = useState(false)
+
+  const { setProducts } = useContext(SearchContext)
+
+  const [text, setText] = useState("");
 
   useEffect(()=> {
     const handleResize = () => {
@@ -29,15 +35,30 @@ export default function HeaderDesktop() {
     }
   }, [])
 
+  const handleSearch = async () => {
+    const products = await fetchProducts(text)
+    setProducts(products)
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value); // Atualize o estado text com o valor do campo de entrada
+  }
+
   if(!shouldRender) {
     return null
   }
 
   return (
     <>
-      <header className="header-desktop">
+      <header id="header" className="header-desktop">
         <h1>Ecommerce</h1>
-        <input type="text" name="" id="search" />
+        <input type="text" name="" id="search" 
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleSearch();
+            }
+            }}
+            onChange={handleChange}/>
         <button className="profile">
           <Image
             src={profile}

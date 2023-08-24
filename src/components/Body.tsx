@@ -1,36 +1,30 @@
 'use client'
 
+import fetchProducts from '@/Api/fetchProducts';
 import TopImg from '../img/top-img.svg'
 
 import Image from "next/image"
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { SearchContext } from '@/Contexts/SearchProvider';
+import formatCurrency from '@/utils/formatCurrency';
 
-interface Products {
-  id: number,
+interface ProductProps {
+  id : number,
+  title: string,
   price: number,
-  name: string,
-  img: string
+  original_price : number,
+  thumbnail: string
 }
 
 export default function Body() {
 
-  const [data, setData] = useState<Products[]>([]);
+  const {products, setProducts} = useContext(SearchContext)
 
-  useEffect(()=>{
-    products()
-  }, [])
-
-  const products = async () => {
-    const url = 'https://diegocard117.github.io/JsonTest/ecommerce.json'
-    try {
-      const response = await fetch(url)
-      const data = await response.json()
-      setData(data)
-      console.log(data)
-    } catch(error) {
-      console.error('Erro encontrado', error)
-    }
-  }
+  useEffect(() => {
+    fetchProducts('iphone').then((response) => {
+      setProducts(response)
+    })
+  }, [setProducts])
 
   return (
     <>
@@ -40,26 +34,27 @@ export default function Body() {
           src={TopImg}
           alt=''
         />
-        {data.map((data) => (
-          <div className='box-products' key={data.id}>
+        {products.slice(0 , 16).map((products: ProductProps) => (
+          <div className='box-products' key={products.id}>
           <Image
             loader={({src}) => src}
             width={200}
             height={200}
             className='img-product'
-            src={data.img}
+            src={products.thumbnail.replace(/\w\.jpg/gi, 'W.jpg')}
             alt=''
+            priority
           />
-          <span className='name-product'>{data.name}</span>
+          <span className='name-product'>{products.title}</span>
           <span className='price-red'>
-            <span>de </span><span></span><span> por:</span>
+            <span>de </span><span>{(products.original_price ? 'R$ ' + (products.original_price).toFixed(2) : formatCurrency(products.price * 2))}</span><span> por:</span>
           </span>
           <span className='green-price-product'>
             <span className='green-span'>á vista </span>
-            <span className='price-green'>R${data.price}</span>
+            <span className='price-green'>{formatCurrency(products.price)}</span>
           </span>
           <span className='span-parcel'>
-            em até 12x de R${((data.price / 12) * 1.2).toFixed(2)} sem juros no cartão
+            em até 12x de R${((products.price / 12) * 1.2).toFixed(2)} sem juros no cartão
           </span>
         </div>
         ))}
