@@ -1,5 +1,3 @@
-'use client'
-
 import Aside from "@/components/Aside";
 import Body from "@/components/Body";
 import Footer from "@/components/Footer";

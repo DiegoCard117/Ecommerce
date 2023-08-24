@@ -1,4 +1,4 @@
-
+'use client'
 import gpu from '../img/gpu.svg'
 import mouse from '../img/mouse.svg'
 import desktop from '../img/desktop.svg'
@@ -28,7 +28,6 @@ const imagens = [
   {id:'8', img: note},
   {id:'9', img: console},
   {id:'10', img: router}
-  
 ]
 
 
