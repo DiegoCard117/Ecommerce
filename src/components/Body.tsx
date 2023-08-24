@@ -26,29 +26,31 @@ export default function Body() {
           src={TopImg}
           alt=''
         />
-        {products.slice(0 , 16).map((products) => (
-          <div className='box-products' key={products.id}>
-          <Image
-            loader={({src}) => src}
-            width={200}
-            height={200}
-            className='img-product'
-            src={products.thumbnail.replace(/\w\.jpg/gi, 'W.jpg')}
-            alt=''
-            priority
-          />
-          <span className='name-product'>{products.title}</span>
-          <span className='price-red'>
-            <span>de </span><span>{(products.original_price ? 'R$ ' + (products.original_price).toFixed(2) : formatCurrency(products.price * 2))}</span><span> por:</span>
-          </span>
-          <span className='green-price-product'>
-            <span className='green-span'>á vista </span>
-            <span className='price-green'>{formatCurrency(products.price)}</span>
-          </span>
-          <span className='span-parcel'>
-            em até 12x de R${((products.price / 12) * 1.2).toFixed(2)} sem juros no cartão
-          </span>
-        </div>
+        {products.map((products, index) => (
+          index < 16 && (
+            <div className='box-products' key={products.id}>
+              <Image
+                loader={({src}) => src}
+                width={200}
+                height={200}
+                className='img-product'
+                src={products.thumbnail.replace(/\w\.jpg/gi, 'W.jpg')}
+                alt=''
+                priority
+              />
+              <span className='name-product'>{products.title}</span>
+              <span className='price-red'>
+                <span>de </span><span>{(products.original_price ? 'R$ ' + (products.original_price).toFixed(2) : formatCurrency(products.price * 2))}</span><span> por:</span>
+              </span>
+              <span className='green-price-product'>
+                <span className='green-span'>á vista </span>
+                <span className='price-green'>{formatCurrency(products.price)}</span>
+              </span>
+              <span className='span-parcel'>
+                em até 12x de R${((products.price / 12) * 1.2).toFixed(2)} sem juros no cartão
+              </span>
+            </div>
+          )
         ))}
         
       </section>
