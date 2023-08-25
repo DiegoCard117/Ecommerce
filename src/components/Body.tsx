@@ -4,23 +4,28 @@ import fetchProducts from '@/Api/fetchProducts';
 import TopImg from '../img/top-img.svg'
 
 import Image from "next/image"
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SearchContext } from '@/Contexts/SearchProvider';
 import formatCurrency from '@/utils/formatCurrency';
+
+import Loading from './Loading';
 
 export default function Body() {
 
   const {products , setProducts} = useContext(SearchContext)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchProducts('iphone').then((response) => {
       setProducts(response)
+      setLoading(false)
     })
   }, [setProducts])
 
   return (
     <>
-      <section className="body-products">
+      {(loading && <Loading/>) || 
+        <section className="body-products">
         <Image
           className='top-img'
           src={TopImg}
@@ -52,8 +57,10 @@ export default function Body() {
             </div>
           )
         ))}
-        
+
       </section>
+      }
+      
     </>
   )
 }

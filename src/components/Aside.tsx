@@ -1,4 +1,10 @@
 'use client'
+import Image from "next/image";
+
+import { useContext, useState } from 'react'
+import { SearchContext } from '@/Contexts/SearchProvider';
+import fetchProducts from '@/Api/fetchProducts';
+
 import gpu from '../img/gpu.svg'
 import mouse from '../img/mouse.svg'
 import desktop from '../img/desktop.svg'
@@ -10,26 +16,18 @@ import note from '../img/note.svg'
 import console from '../img/console.svg'
 import router from '../img/router.svg'
 
-import Image from "next/image";
-
-import { useContext, useState } from 'react'
-import { SearchContext } from '@/Contexts/SearchProvider';
-import fetchProducts from '@/Api/fetchProducts';
-
-
-const imagens = [
-  {id:'1', img: gpu},
-  {id:'2', img: mouse},
-  {id:'3', img: desktop},
-  {id:'4', img: upgrade},
-  {id:'5', img: monitor},
-  {id:'6', img: cadeira},
-  {id:'7', img: mesa},
-  {id:'8', img: note},
-  {id:'9', img: console},
-  {id:'10', img: router}
-]
-
+const menuItems = [
+  { id: '1', name: 'Placa de Video' },
+  { id: '2', name: 'Periféricos' },
+  { id: '3', name: 'Computadores' },
+  { id: '4', name: 'Kit Upgrade' },
+  { id: '5', name: 'Monitores' },
+  { id: '6', name: 'Cadeiras e Mesas Gamer' },
+  { id: '7', name: 'Cadeiras e Mesas de Escritório' },
+  { id: '8', name: 'Notebooks' },
+  { id: '9', name: 'Consoles' },
+  { id: '10', name: 'Redes e Wireless' },
+];
 
 export default function Aside() {
   const { setProducts } = useContext(SearchContext)
@@ -47,30 +45,51 @@ export default function Aside() {
   
   return (
       <aside className="aside-desktop">
-        <div className='menu-left'>
-          {imagens.map( (item) => (
-            <button key={item.id}>
-              <Image
-                src={item.img}
-                alt='menu'
-              />
-            </button>
+        <div className="menu-left">
+        {/* Mapear os itens do menu e criar botões com imagens */}
+        {menuItems.map((item) => (
+          <button key={item.id} onClick={() => handleListItemClick(item.name)}>
+            <Image src={getMenuImage(item.name)} alt="menu" />
+          </button>
+        ))}
+      </div>
+      <div>
+        <ul>
+          {/* Mapear os itens do menu e crie itens de lista */}
+          {menuItems.map((item) => (
+            <li key={item.id} onClick={() => handleListItemClick(item.name)}>
+              {item.name}
+            </li>
           ))}
-        </div>
-        <div>
-          <ul>
-          <li onClick={() => handleListItemClick('Placa de Video')}>Placa de Video</li>
-          <li onClick={() => handleListItemClick('Perifericos')}>Periféricos</li>
-          <li onClick={() => handleListItemClick('Computadores')}>Computadores</li>
-          <li onClick={() => handleListItemClick('Kit Upgrade')}>Kit Upgrade</li>
-          <li onClick={() => handleListItemClick('Monitores')}>Monitores</li>
-          <li onClick={() => handleListItemClick('Cadeiras e Mesas Gamer')}>Cadeiras e Mesas Gamer</li>
-          <li onClick={() => handleListItemClick('Cadeiras e Mesas de Escritorio')}>Cadeiras e Mesas de Escritório</li>
-          <li onClick={() => handleListItemClick('Notebooks')}>Notebooks</li>
-          <li onClick={() => handleListItemClick('Consoles')}>Consoles</li>
-          <li onClick={() => handleListItemClick('Redes e Wireless')}>Redes e Wireless</li>
-          </ul>
-        </div>
+        </ul>
+      </div>
       </aside>
   )
+}
+
+function getMenuImage(itemName: string) {
+  switch (itemName) {
+    case 'Placa de Video':
+      return gpu;
+    case 'Periféricos':
+      return mouse;
+    case 'Computadores':
+      return desktop;
+    case 'Kit Upgrade':
+      return upgrade;
+    case 'Monitores':
+      return monitor;
+    case 'Cadeiras e Mesas Gamer':
+      return cadeira;
+    case 'Cadeiras e Mesas de Escritório':
+      return mesa;
+    case 'Notebooks':
+      return note;
+    case 'Consoles':
+      return console;
+    case 'Redes e Wireless':
+      return router;
+    default:
+      return ''; // Caso nenhum nome corresponda, retorne uma string vazia
+  }
 }

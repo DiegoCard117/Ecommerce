@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
+
 }
 
 
@@ -13,7 +14,7 @@ body {
   display: grid;
   grid-template-areas:
    'header header'
-   'aside section'
+   'section section'
    'footer footer'
   ;
 }
@@ -59,7 +60,7 @@ header {
         font-weight: 400;
       }
 
-      button {
+      .btn-nav {
         img {
           mix-blend-mode: multiply;
         }
@@ -88,7 +89,6 @@ header {
 
 
 aside {
-  grid-area: aside;
   display: flex;
   flex-direction: row;
 

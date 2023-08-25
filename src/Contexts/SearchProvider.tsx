@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, ReactNode, createContext } from "react";
+import React, { useState, ReactNode, createContext, useContext } from "react";
 
 interface ProductProps {
   thumbnail: string;
@@ -35,7 +35,7 @@ interface SearchProviderProps {
 
 export const SearchContext = createContext<ContextData | Product>({} as Product);
 
-const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
+export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<string[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -56,4 +56,4 @@ const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   );
 }
 
-export default SearchProvider;
+export const useSearchContext = () => useContext(SearchContext)

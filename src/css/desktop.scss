@@ -13,6 +13,14 @@ a {
 
 
 @media screen and (min-width: 720px){
+  body {
+    display: grid;
+    grid-template-areas:
+     'header header'
+     'aside section'
+     'footer footer'
+    ;
+  }
   
   .header-desktop {
     grid-area: header;
