@@ -9,6 +9,7 @@ import heart from '../img/heart-desktop.svg'
 import cart from '../img/cart-desktop.svg'
 import { SearchContext } from "@/Contexts/SearchProvider";
 import fetchProducts from "@/Api/fetchProducts";
+import Link from "next/link";
 
 export default function HeaderDesktop() {
 
@@ -51,7 +52,7 @@ export default function HeaderDesktop() {
   return (
     <>
       <header id="header" className="header-desktop">
-        <h1>Ecommerce</h1>
+        <Link href="/"><h1 className="titleSite">Ecommerce</h1></Link>
         <input type="text" name="" id="search" 
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -59,36 +60,36 @@ export default function HeaderDesktop() {
             }
             }}
             onChange={handleChange}/>
-        <button className="profile">
+        <Link href="/Login" className="profile">
           <Image
             src={profile}
             alt=""
           />
           <p>Minha Conta</p>
-        </button>
-        <button className="contato">
+        </Link>
+        <Link href=""className="contato">
           <Image
             src={oque}
             alt=""
           />
           <p>Fale Conosco</p>
-        </button>
-        <button className="favoritos">
+        </Link>
+        <Link href=""className="favoritos">
           <Image
             src={heart}
             alt=""
           />
           <p>Favoritos</p>
-          <div className="quantidade-favoritos"><span>2</span></div>
-        </button>
-        <button>
+          <div className="quantidade-favoritos"><p>2</p></div>
+        </Link>
+        <Link href="" className="carrinho">
           <Image
             src={cart}
             alt=""
           />
           <p>Carrinho</p>
-          <div className="quantidade-compra"><span>4</span></div>
-        </button>
+          <div className="quantidade-compra"><p>4</p></div>
+        </Link>
       </header>
     </>
   )

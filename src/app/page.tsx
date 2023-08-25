@@ -1,8 +1,5 @@
-import '../css/globals.scss'
-import '../css/desktop.scss'
-import Home from '@/pages/Home';
-
 import SearchProvider from '@/Contexts/SearchProvider';
+import Home from '@/app/Home/page';
 
 export default function App() {
   return (

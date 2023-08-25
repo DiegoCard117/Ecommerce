@@ -38,7 +38,7 @@ export default function Body() {
                 alt=''
                 priority
               />
-              <span className='name-product'>{product.title}</span>
+              <span className='name-product'>{(product.title)}</span>
               <span className='price-red'>
                 <span>de </span><span>{(product.original_price ? 'R$ ' + (product.original_price).toFixed(2) : formatCurrency(product.price * 2))}</span><span> por:</span>
               </span>

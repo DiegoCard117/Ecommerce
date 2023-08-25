@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import '../css/globals.scss'
+import '../css/desktop.scss'
 
 export const metadata: Metadata = {
   title: 'Ecommerce',

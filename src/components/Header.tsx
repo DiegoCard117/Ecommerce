@@ -94,7 +94,7 @@ export default function Header() {
               <button className='favorites'>
                 <Image
                   src={profile}
-                  alt='favoritos'
+                  alt='Profile'
                 />
                 <span>Minha Conta</span>
               </button>
