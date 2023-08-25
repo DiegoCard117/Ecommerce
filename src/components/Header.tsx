@@ -11,10 +11,13 @@ import React, { useEffect, useState, useContext } from 'react';
 import fetchProducts from '@/Api/fetchProducts';
 import { SearchContext } from '@/Contexts/SearchProvider';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
 
   //const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const router = useRouter();
 
   const [shouldRender, setShouldRender] = useState(false)
 
@@ -24,7 +27,7 @@ export default function Header() {
 
   useEffect(()=> {
     const handleResize = () => {
-      if (window.innerWidth < 720) {
+      if (window.innerWidth < 719) {
         setShouldRender(true)
       } else {
         setShouldRender(false)
@@ -46,6 +49,7 @@ export default function Header() {
   const handleSearch = async () => {
     const products = await fetchProducts(text)
     setProducts(products)
+    router.push('/Home')
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -21,7 +21,7 @@ export default function HeaderDesktop() {
 
   useEffect(()=> {
     const handleResize = () => {
-      if (window.innerWidth > 1200) {
+      if (window.innerWidth > 720) {
         setShouldRender(true)
       } else {
         setShouldRender(false)

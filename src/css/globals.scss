@@ -138,12 +138,12 @@
     align-items: center;
     flex-direction: column;
     min-width: 100px;
-
+    
     .top-img {
       width: 100%;
       object-fit: cover;
     }
-
+    
     .box-products {
       display: flex;
       flex-direction: column;
@@ -154,8 +154,9 @@
       height: 420px;
       box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.19);
       border-radius: 10px;
-      transition: 0.5 ease;
+      margin: 20px 0;
       cursor: pointer;
+      transition: 0.5 ease;
 
       .img-product {
         z-index: -1;
@@ -449,7 +450,7 @@
       }
       
       .box-products {
-        margin: 3%;
+        margin: 3% 0% 0% 3%;
         height: 450px;
         width: 300px;
         display: flex;
