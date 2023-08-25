@@ -4,15 +4,19 @@ import loading from '../img/loading.svg'
 export default function Loading() {
   return (
     <> 
-      <Image style={{
+      <div style={{
         display: "flex",
         alignItems: "center",
         justifyContent: 'center',
         gridArea: 'section',
-        height : '100%'
-      }} src={loading} alt={"Loading"}>
-
+        height : '100%',
+        width: '100%'
+      }}
+      >
+        <Image src={loading} alt={"Loading"}>
       </Image>
+      </div>
+
     </>
   )
 }

@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
-
+  //outline: 1px solid red;
 }
 
 
@@ -45,10 +45,12 @@ header {
   grid-area: header;
   background: var(--white);
   padding: 10px;
+  height: 120px;
   nav {
     .logo {
       display: flex;
       justify-content: space-between;
+      margin-bottom: -15px;
       
       .cart , .favorites {
         border: none;
@@ -58,6 +60,8 @@ header {
       .logo-title {
         font-size: 24px;
         font-weight: 400;
+        color: #0c0c0c;
+        text-decoration: none;
       }
 
       .btn-nav {
@@ -81,6 +85,7 @@ header {
         background: var(--black) url(../img/search-icon.svg) no-repeat right;
         color: var(--white);
         padding: 10px;
+        border-radius: 5px;
       }
     }
   }

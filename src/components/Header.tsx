@@ -57,7 +57,7 @@ export default function Header() {
       <header id='header responsivo'>
         <nav>
           <div className='logo'>
-            <h1 className='logo-title'>Ecommerce</h1>
+            <Link href={'/'}><h1 className='logo-title'>Ecommerce</h1></Link>
             <div className='btn-menu-top'>
               <Link className='favorites btn-nav' href={'/Login'}>
                 <Image
