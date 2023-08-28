@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 
+import '../../css/cadastro.scss'
+import Link from "next/link";
+
 export default function Cadastro() {
 
   const { user, signInWithGoogle } = useAuth()
@@ -26,8 +29,11 @@ export default function Cadastro() {
       <Header/>
       <HeaderDesktop/>
       <div className="containerCadastro">
-        <button>Ja possui uma conta?</button>
-        <div>
+        <Link
+          href={'/Login'}
+          className="btnLoginVolta"
+        >Ja possui uma conta?</Link>
+        <div className="TopCadastro">
           <h1>Novo Cliente?</h1>
           <p>É novo por aqui? <br/>
             Informe seus dados e uma senha para aproveitar todos os benefícios de ter uma conta.</p>
@@ -57,15 +63,18 @@ export default function Cadastro() {
           <label htmlFor="confirmEmail">Confirme seu Email</label>
           <input type="text" name="confirmEmail" placeholder="Confirme seu email"/>
 
-          <div>
-            <label htmlFor="senha">senha</label>
-            <input type="password" name="senha" placeholder="Digite sua senha"/>
-
-            <label htmlFor="confirmSenha">ㅤ</label>
-            <input type="password" name="confirmSenha" placeholder="Confirme sua senha"/>
+          <div className="boxSenha">
+              <label htmlFor="senha">Senha</label>
+            <div className="boxSenhaDentro">
+              <input type="password" name="senha" placeholder="Digite sua senha"/>
+              <input type="password" name="confirmSenha" placeholder="Confirme sua senha"/>
+            </div>
           </div>
 
-          <button>Criar Conta</button>
+          <button
+            className="CriarCadastro"
+            onClick={(e) => e.preventDefault()}
+          >Criar Conta</button>
         </form>
         <div className="boxLoginSocial">
             {/* login com google */}

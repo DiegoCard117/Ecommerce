@@ -5,7 +5,7 @@ import '../services/firebase'
 export default function App() {
   return (
     <>
-        <Home/>
+      <Home/>
     </>
   )
 }

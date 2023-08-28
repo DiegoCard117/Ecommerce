@@ -15,7 +15,8 @@ import { useRouter } from 'next/navigation';
 
 export default function Header() {
 
-  //const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [ MenuClass, setMenuClass] = useState('close')
 
   const router = useRouter();
 
@@ -24,6 +25,14 @@ export default function Header() {
   const { setProducts } = useContext(SearchContext)
 
   const [text, setText] = useState("");
+
+  const updateMenu = () => {
+    const aside = document.querySelector('aside');
+    if (aside) {
+      !isMenuOpen ? setMenuClass("open") : setMenuClass("close")
+      setIsMenuOpen(!isMenuOpen)
+    }
+  }
 
   useEffect(()=> {
     const handleResize = () => {
@@ -95,7 +104,9 @@ export default function Header() {
             </div>
           </div>
           <div className='menu-bottom'>
-            <button>
+            <button
+              onClick={updateMenu}
+            >
             <Image
                 src={menu}
                 alt='menu'
@@ -110,6 +121,22 @@ export default function Header() {
               onChange={handleChange}/>
           </div>
         </nav>
+        <aside>
+          <div className={MenuClass}>
+            <ul>
+              <li>Hardware</li>
+              <li>Perifericos</li>
+              <li>Computadores</li>
+              <li>Kit Upgrade</li>
+              <li>Monitores</li>
+              <li>Cadeiras e Mesas Gamer</li>
+              <li>Cadeiras e Mesas de Escritorio</li>
+              <li>Notebooks</li>
+              <li>Consoles</li>
+              <li>Redes e Wireless</li>
+            </ul>
+          </div>
+        </aside>
       </header>
       
     </>
@@ -118,31 +145,21 @@ export default function Header() {
 
 /*
 <aside>
-        <div className='menu-left' onClick={updateMenu}>
-          {imagens.map( (item) => (
-            <button key={item.id}>
-              <Image
-                src={item.img}
-                alt='menu'
-              />
-            </button>
-          ))}
-        </div>
-        <div className={MenuClass}>
-          <ul>
-            <li>Hardware</li>
-            <li>Perifericos</li>
-            <li>Computadores</li>
-            <li>Kit Upgrade</li>
-            <li>Monitores</li>
-            <li>Cadeiras e Mesas Gamer</li>
-            <li>Cadeiras e Mesas de Escritorio</li>
-            <li>Notebooks</li>
-            <li>Consoles</li>
-            <li>Redes e Wireless</li>
-          </ul>
-        </div>
-      </aside>
+  <div className={MenuClass}>
+    <ul>
+      <li>Hardware</li>
+      <li>Perifericos</li>
+      <li>Computadores</li>
+      <li>Kit Upgrade</li>
+      <li>Monitores</li>
+      <li>Cadeiras e Mesas Gamer</li>
+      <li>Cadeiras e Mesas de Escritorio</li>
+      <li>Notebooks</li>
+      <li>Consoles</li>
+      <li>Redes e Wireless</li>
+    </ul>
+  </div>
+</aside>
 
   const updateMenu = () => {
     const aside = document.querySelector('aside');
@@ -162,5 +179,16 @@ export default function Header() {
   import note from '../img/note.svg'
   import console from '../img/console.svg'
   import router from '../img/router.svg'
+
+        <div className='menu-left' onClick={updateMenu}>
+          {imagens.map( (item) => (
+            <button key={item.id}>
+              <Image
+                src={item.img}
+                alt='menu'
+              />
+            </button>
+          ))}
+        </div>
 
 */

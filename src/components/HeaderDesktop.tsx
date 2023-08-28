@@ -52,44 +52,44 @@ export default function HeaderDesktop() {
   return (
     <>
       <header id="header" className="header-desktop">
-        <Link href="/"><h1 className="titleSite">Ecommerce</h1></Link>
-        <input type="text" name="" id="search" 
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSearch();
-            }
-            }}
-            onChange={handleChange}/>
-        <Link href="/Login" className="profile">
-          <Image
-            src={profile}
-            alt=""
-          />
-          <p>Minha Conta</p>
-        </Link>
-        <Link href=""className="contato">
-          <Image
-            src={oque}
-            alt=""
-          />
-          <p>Fale Conosco</p>
-        </Link>
-        <Link href=""className="favoritos">
-          <Image
-            src={heart}
-            alt=""
-          />
-          <p>Favoritos</p>
-          <div className="quantidade-favoritos"><p>2</p></div>
-        </Link>
-        <Link href="" className="carrinho">
-          <Image
-            src={cart}
-            alt=""
-          />
-          <p>Carrinho</p>
-          <div className="quantidade-compra"><p>4</p></div>
-        </Link>
+          <Link href="/"><h1 className="titleSite">Ecommerce</h1></Link>
+          <input type="text" name="" id="search"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch();
+              }
+              }}
+              onChange={handleChange}/>
+          <Link href="/Login" className="profile">
+            <Image
+              src={profile}
+              alt=""
+            />
+            <p>Minha Conta</p>
+          </Link>
+          <Link href=""className="contato">
+            <Image
+              src={oque}
+              alt=""
+            />
+            <p>Fale Conosco</p>
+          </Link>
+          <Link href=""className="favoritos">
+            <Image
+              src={heart}
+              alt=""
+            />
+            <p>Favoritos</p>
+            <div className="quantidade-favoritos"><p>2</p></div>
+          </Link>
+          <Link href="/Cart" className="carrinho">
+            <Image
+              src={cart}
+              alt=""
+            />
+            <p>Carrinho</p>
+            <div className="quantidade-compra"><p>4</p></div>
+          </Link>
       </header>
     </>
   )

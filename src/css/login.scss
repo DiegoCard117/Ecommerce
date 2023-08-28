@@ -8,129 +8,193 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: calc(100vh - 120px);
   grid-area: section;
 
-  .TopLogin, .MedLogin, .BottomLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .TopLogin {
-    justify-content: center;
-    height: 30%;
-
-    h2, h3 {
-      font-weight: normal;
-    }
-    h2 { font-size: 20px;}
-    h3 { font-size: 16px;}
+  .imgLogin {
+    display: none;
   }
 
-  .MedLogin {
-    justify-content: start;
-    height: 55%;
+  .LoginRight {
+    height: calc(100vh - 120px);
     width: 100%;
 
-    .formLogin {
+    .TopLogin, .MedLogin, .BottomLogin {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
-
-      .btnLogin {
-        background: #0c0c0c;
-        color: #F1F2F5;
-        width: 60%;
-        height: 40px;
-        margin-top: 24px;
-        border-radius: 5px;
-        font-size: 16px;
+    }
+    
+    .TopLogin {
+      justify-content: center;
+      height: 30%;
+  
+      h2, h3 {
         font-weight: normal;
-        transition: 0.5s ease;
       }
-
-      .btnLogin:hover {
-        background: #F1F2F5;
-        color: #0c0c0c;
-        border: 1px solid #0c0c0c;
-      }
-
-      .inputEmailLogin {
-        background: #0c0c0c;
-        width: 90%;
-        height: 40px;
-        border: none;
-        margin-bottom: 24px;
-        border-radius: 5px;
-        color: #F1F2F5;
-        padding-left: 5px;
-      }
-
-      .inputSenhaLogin {
-        position: relative;
+      h2 { font-size: 20px;}
+      h3 { font-size: 16px;}
+    }
+  
+    .MedLogin {
+      justify-content: start;
+      height: 55%;
+      width: 100%;
+  
+      .formLogin {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
-        height: 40px;
-        
-        
-        input {
-          width: calc(90% - 40px);
+  
+        .btnLogin {
           background: #0c0c0c;
+          color: #F1F2F5;
+          width: 60%;
+          height: 40px;
+          margin-top: 24px;
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: normal;
+          z-index: 99;
+          cursor: pointer;
+          transition: 0.5s ease;
+        }
+  
+        .btnLogin:hover {
+          background: #F1F2F5;
+          color: #0c0c0c;
+          border: 1px solid #0c0c0c;
+        }
+  
+        .inputEmailLogin {
+          background: #0c0c0c;
+          width: 90%;
+          height: 40px;
           border: none;
-          border-radius: 5px 0 0 5px;
+          margin-bottom: 24px;
+          border-radius: 5px;
           color: #F1F2F5;
           padding-left: 5px;
+          z-index: 99;
         }
-        
-        .btnEye {
-          background: #0c0c0c;
-          border: none;
-          border-radius: 0 5px 5px 0 ;
+  
+        .inputSenhaLogin {
+          position: relative;
           display: flex;
           justify-content: center;
-          align-items: center;
-          width: 40px;
+          width: 100%;
+          height: 40px;
+          
+          
+          input {
+            width: calc(90% - 40px);
+            background: #0c0c0c;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            color: #F1F2F5;
+            padding-left: 5px;
+          }
+          
+          .btnEye {
+            background: #0c0c0c;
+            border: none;
+            border-radius: 0 5px 5px 0 ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+          }
+  
         }
-
+      }
+      .boxLoginSocial {
+        z-index: 99;
+        margin-top: 20px;
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+        
+        .socialLogin {
+          cursor: pointer;
+          border: none;
+          background: none;
+        }
       }
     }
-    .boxLoginSocial {
-      margin-top: 20px;
-      width: 40%;
-      display: flex;
-      justify-content: space-around;
+  
+    .BottomLogin {
+      justify-content: end;
+      height: 15%;
+      width: 100%;
+      padding-bottom: 10px;
+      z-index: 199;
+  
+      .LinkCadastro {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px 5px;
+        color: #0c0c0c;
+        text-decoration: none;
+        z-index: 99;
 
-      .socialLogin {
-        border: none;
-        background: none;
+        h2 {
+          font-weight: normal;
+        }
+      }
+  
+      .LinkRecuperar {
+        text-decoration: none;
+        color: #0c0c0c;
       }
     }
+
+
   }
+}
 
-  .BottomLogin {
-    justify-content: end;
-    height: 15%;
-    width: 100%;
-    padding-bottom: 10px;
+@media screen and (min-width: 720px){
+  .containerLogin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
-    .LinkCadastro {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 0px 5px;
-      color: #0c0c0c;
-      text-decoration: none;
-      h2 {
-        font-weight: normal;
+    .imgLogin {
+      display: block;
+      width: 45%;
+
+      img {
+        width: 100%;
+        object-fit: contain;
       }
     }
 
-    .LinkRecuperar {
-      text-decoration: none;
-      color: #0c0c0c;
+    .LoginRight {
+      width: 45%;
+
+      .TopLogin {
+        height: 40%;
+        h2 { font-size: 40px;}
+        h3 { font-size: 16px;}
+      }
+
+      .MedLogin {
+
+        .formLogin {
+          .inputEmailLogin {
+            width: 50%;
+          }
+
+          .inputSenhaLogin {
+            width: 55.5%;
+          }
+
+          .btnLogin {
+            max-width: 300px;
+          }
+        }
+      }
     }
   }
 }

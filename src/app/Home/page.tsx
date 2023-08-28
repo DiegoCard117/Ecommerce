@@ -15,14 +15,16 @@ function Home() {
 
   return (
     <>
-      <head>
-        <title>Home | Ecommerce</title>
-      </head>
-      <Header/>
-      <HeaderDesktop/>
-      <Body/>
-      <Aside/>
-      <Footer/>
+      <div className="containerHome">
+        <head>
+          <title>Home | Ecommerce</title>
+        </head>
+        <Header/>
+        <HeaderDesktop/>
+        <Body/>
+        <Aside/>
+        <Footer/>
+      </div>
     </>
   )
 }

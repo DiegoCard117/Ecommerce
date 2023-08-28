@@ -1,0 +1,101 @@
+
+* {
+  outline: 1px solid red;
+}
+
+.containerCadastro {
+  z-index: 99;
+  height: 100vh;
+  width: 96vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+
+  .btnLoginVolta {
+    position: relative;
+    right: -25%;
+    text-decoration: none;
+    color: #0c0c0c;
+    margin-bottom: 40px;
+  }
+
+  .TopCadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-weight: normal;
+    }
+
+    p {
+      text-align: center;
+      width: 70%;
+    }
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label, input, select {
+      width: 90%;
+      border-radius: 5px;
+    }
+
+    label {
+      margin: 15px 0px 0px 30px;
+    }
+    
+    input, select {
+      background: #0c0c0c;
+      border: none;
+      color: #F1F2F5;
+      padding: 15px;
+    }
+
+    .CriarCadastro {
+      background: #0c0c0c;
+      color: #F1F2F5;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0px;
+      width: 50%;
+    }
+
+    .CriarCadastro:hover {
+      background: #F1F2F5;
+      color: #0c0c0c;
+      outline:1px solid #0c0c0c;
+    }
+
+    .boxSenha {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .boxSenhaDentro {
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 45%;
+        }
+      }
+    }
+  }
+  .boxLoginSocial {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+
+    button {
+      background: none;
+      border: none;
+    }
+  }
+}
