@@ -1,7 +1,11 @@
 import '../css/globals.scss'
 import '../css/desktop.scss'
 
-import { SearchProvider } from '@/Contexts/SearchProvider'
+import { SearchProvider } from '@/contexts/SearchProvider'
+
+import { AuthContextProvider } from '@/contexts/AuthContext'
+import '../services/firebase'
+
 
 export default function RootLayout({
   children,
@@ -10,11 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <SearchProvider>
-        <html lang="pt-br">
-          <body>{children}</body>
-        </html>
-      </SearchProvider>
+      <AuthContextProvider>
+        <SearchProvider>
+          <html lang="pt-br">
+            <body>{children}</body>
+          </html>
+        </SearchProvider>
+      </AuthContextProvider>
     </>
   )
 }

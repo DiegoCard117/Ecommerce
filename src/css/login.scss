@@ -95,8 +95,17 @@
         }
 
       }
-     
+    }
+    .boxLoginSocial {
+      margin-top: 20px;
+      width: 40%;
+      display: flex;
+      justify-content: space-around;
 
+      .socialLogin {
+        border: none;
+        background: none;
+      }
     }
   }
 

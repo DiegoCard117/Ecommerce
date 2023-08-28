@@ -9,13 +9,30 @@ import locker from '../../img/locker.svg'
 
 import '../../css/login.scss'
 
-import user from '../../img/user.svg'
+import usuario from '../../img/user.svg'
 import eyeClose from '../../img/eyeClose.svg'
+
+import google from '../../img/google.svg'
+import face from '../../img/face.svg'
 
 
 import Header from "@/components/Header";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from 'next/navigation';
 
 function Login() {
+
+  const { user, signInWithGoogle } = useAuth()
+  const router = useRouter();
+
+  async function login(e: { preventDefault: () => void; }) {
+    e.preventDefault()
+    if(!user) {
+      await signInWithGoogle()
+    }
+    router.push('/Home')
+  }
+
   return (
     <>
       <HeaderDesktop />
@@ -50,9 +67,20 @@ function Login() {
             </div>
             <button
               className="btnLogin"
-              onClick={(e) => e.preventDefault()}
             >Acessar Conta</button>
           </form>
+          <div className="boxLoginSocial">
+            {/* login com google */}
+            <button
+              className="socialLogin"
+              onClick={login}
+            >
+              <Image src={google} alt={"Login com google"}/>
+            </button>
+            <button className="socialLogin">
+              <Image src={face} alt={"Login com Facebook"}/>
+            </button>
+          </div>
         </div>
         <div className="BottomLogin">
           <Link
@@ -66,7 +94,7 @@ function Login() {
             className="LinkCadastro"
             >
             <Image
-              src={user}
+              src={usuario}
               alt=""
               width={50}
               height={50}

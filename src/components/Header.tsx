@@ -9,7 +9,7 @@ import Image from 'next/image'
 import React, { useEffect, useState, useContext } from 'react';
 
 import fetchProducts from '@/Api/fetchProducts';
-import { SearchContext } from '@/Contexts/SearchProvider';
+import { SearchContext } from '@/contexts/SearchProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 

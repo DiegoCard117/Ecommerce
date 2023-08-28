@@ -5,7 +5,7 @@ import TopImg from '../img/top-img.svg'
 
 import Image from "next/image"
 import { useContext, useEffect, useState } from 'react';
-import { SearchContext } from '@/Contexts/SearchProvider';
+import { SearchContext } from '@/contexts/SearchProvider';
 import formatCurrency from '@/utils/formatCurrency';
 
 import Loading from './Loading';
@@ -36,6 +36,7 @@ export default function Body() {
             <div className='box-products' key={product.id}>
               <Image
                 loader={({src}) => src}
+                unoptimized={true}
                 width={200}
                 height={200}
                 className='img-product'

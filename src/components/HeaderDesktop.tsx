@@ -7,7 +7,7 @@ import profile from '../img/profile-desktop.svg'
 import oque from '../img/interrogaçao-desktop.svg'
 import heart from '../img/heart-desktop.svg'
 import cart from '../img/cart-desktop.svg'
-import { SearchContext } from "@/Contexts/SearchProvider";
+import { SearchContext } from "@/contexts/SearchProvider";
 import fetchProducts from "@/Api/fetchProducts";
 import Link from "next/link";
 

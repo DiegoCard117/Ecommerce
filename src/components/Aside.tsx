@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext, useState } from 'react'
-import { SearchContext } from '@/Contexts/SearchProvider';
+import { SearchContext } from '@/contexts/SearchProvider';
 import fetchProducts from '@/Api/fetchProducts';
 
 const menuItems = [
