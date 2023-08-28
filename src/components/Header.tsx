@@ -84,7 +84,7 @@ export default function Header() {
                 />
                 <span>Favoritos</span>
               </Link>
-              <Link className='cart btn-nav' href={''}>
+              <Link className='cart btn-nav' href={'/Cart'}>
               <Image
                   src={cart}
                   alt='favoritos'
