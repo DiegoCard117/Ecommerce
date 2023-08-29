@@ -13,7 +13,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
       <AuthContextProvider>
         <SearchProvider>
           <html lang="pt-br">
@@ -21,6 +20,5 @@ export default function RootLayout({
           </html>
         </SearchProvider>
       </AuthContextProvider>
-    </>
   )
 }

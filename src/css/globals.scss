@@ -21,6 +21,7 @@
 
   button {
     border: none;
+    z-index: 99;
   }
 
   span {
@@ -41,12 +42,42 @@
   }
 
   header {
-
     grid-area: header;
     background: var(--white);
     padding: 10px;
     height: 120px;
+
     nav {
+      position: relative;
+      
+      .nameUsuario {
+        position: absolute;
+        left: 10%;
+        top: 20px;
+        width: max-content;
+        font-size: 3vw;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 0px 5px;
+        color: #0C0C0C;
+      }
+
+      .nameUsuarioLimpo {
+        display: none;
+      }
+
+      .nameUsuario:after {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid black;
+        top: -5px; /*localização. Experimente alterar para 'bottom'*/
+        left: 5%;
+      }
+
       .logo {
         display: flex;
         justify-content: space-between;
@@ -65,6 +96,7 @@
         }
 
         .btn-nav {
+          position: relative;
           img {
             mix-blend-mode: multiply;
           }
@@ -90,8 +122,6 @@
       }
     }
   }
-
-
 
   aside {
     display: flex;
@@ -196,9 +226,8 @@
     }
 
     .box-products:hover {
-      opacity: 0.7;
-      transform: scale(1.01);
-      box-shadow: 5px 5px 40px 1px rgba(0, 0, 0, 0.19);
+      transform: scale(1.02);
+      border: 1px solid #0c0c0c;
     }
   }
 
@@ -323,6 +352,8 @@
   }
 
 }
+
+/*Desktop abaixo*/
   @media screen and (min-width: 720px){
 
     .containerHome {
@@ -341,6 +372,8 @@
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
+      min-height: 80px;
+      padding: 5px;
       
       .titleSite {
         color: #0C0C0C;
@@ -406,7 +439,9 @@
     .aside-desktop {
       grid-area: aside;
       display: flex;
-      margin-right: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      background: #0C0C0C;
   
       .listIconAside {
         ul {
@@ -418,6 +453,7 @@
           justify-content: space-around;
           background-color: #0C0C0C;
           color: #F1F2F5;
+          border-radius: 10px;
           li {
             padding: 10px;
             cursor: pointer;
@@ -501,6 +537,11 @@
         }
   
       }
+
+      .box-products:hover {
+        transform: scale(1.02);
+        border: 1px solid #0c0c0c;
+      }
   
     }
     
@@ -563,6 +604,7 @@
   
             ul {
               li {
+                list-style: none;
                 padding: 15px 0px;
               }
             }

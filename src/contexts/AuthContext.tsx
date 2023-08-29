@@ -10,8 +10,9 @@ type User = {
   }
   
   type AuthContextType = {
-    user: User | undefined;
+    user: User | null;
     signInWithGoogle: () => Promise<void>;
+    signOut: () => Promise<void>;
   }
   
   type AuthContextProviderProps = {
@@ -21,7 +22,7 @@ type User = {
 export const AuthContext = createContext({} as AuthContextType)
 
 export function AuthContextProvider(props: AuthContextProviderProps ) {
-    const [user, setUser] = useState<User>()
+  const [user, setUser] = useState<User | null>(null);
 
     useEffect( () => {
       const unsubscribe = auth.onAuthStateChanged(user => {
@@ -67,8 +68,13 @@ export function AuthContextProvider(props: AuthContextProviderProps ) {
         }
     }
 
+    async function signOut() {
+      await auth.signOut(); // Logout usando Firebase Authentication
+      setUser(null); // Atualiza o estado do usuário para null após o logout
+    }
+
     return (
-        <AuthContext.Provider value={{ user, signInWithGoogle }}>
+        <AuthContext.Provider value={{ user, signInWithGoogle, signOut }}>
             {props.children}
         </AuthContext.Provider>
     ) 

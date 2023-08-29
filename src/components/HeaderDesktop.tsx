@@ -10,12 +10,14 @@ import cart from '../img/cart-desktop.svg'
 import { SearchContext } from "@/contexts/SearchProvider";
 import fetchProducts from "@/Api/fetchProducts";
 import Link from "next/link";
+import { AuthContext } from "@/contexts/AuthContext";
 
 export default function HeaderDesktop() {
 
   const [shouldRender, setShouldRender] = useState(false)
 
   const { setProducts } = useContext(SearchContext)
+  const {user} = useContext(AuthContext)
 
   const [text, setText] = useState("");
 
@@ -60,12 +62,12 @@ export default function HeaderDesktop() {
               }
               }}
               onChange={handleChange}/>
-          <Link href="/Login" className="profile">
+          <Link href={user ? "/Perfil" : "/Login"} className="profile">
             <Image
               src={profile}
               alt=""
             />
-            <p>Minha Conta</p>
+            {user ? <p>Olá, {user.name}</p> : <p>Minha conta</p>}
           </Link>
           <Link href=""className="contato">
             <Image

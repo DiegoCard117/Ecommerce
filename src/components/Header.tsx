@@ -1,4 +1,5 @@
 "use client";
+
 import menu from '../img/menu.svg'
 import cart from '../img/cart.svg'
 import favorites from '../img/heart.svg'
@@ -12,6 +13,7 @@ import fetchProducts from '@/Api/fetchProducts';
 import { SearchContext } from '@/contexts/SearchProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { AuthContext } from '@/contexts/AuthContext';
 
 export default function Header() {
 
@@ -25,6 +27,8 @@ export default function Header() {
   const { setProducts } = useContext(SearchContext)
 
   const [text, setText] = useState("");
+
+  const {user} = useContext(AuthContext)
 
   const updateMenu = () => {
     const aside = document.querySelector('aside');
@@ -72,12 +76,13 @@ export default function Header() {
           <div className='logo'>
             <Link href={'/'}><h1 className='logo-title'>Ecommerce</h1></Link>
             <div className='btn-menu-top'>
-              <Link className='favorites btn-nav' href={'/Login'}>
+              <Link className='favorites btn-nav' href={user ? "/Perfil" : "/Login"}>
                 <Image
                   src={profile}
                   alt='Profile'
                 />
                 <span>Minha Conta</span>
+                {user ? <p className='nameUsuario'>Olá, {user.name}</p> : <p className='nameUsuario nameUsuarioLimpo'></p>}
               </Link>
               <Link className='interrogaçao btn-nav' href={''}>
                 <Image
@@ -103,6 +108,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
+          
           <div className='menu-bottom'>
             <button
               onClick={updateMenu}

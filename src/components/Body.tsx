@@ -26,42 +26,42 @@ export default function Body() {
     <>
       {(loading && <Loading/>) || 
         <section className="body-products">
-        <Image
-          className='top-img'
-          src={TopImg}
-          alt=''
-        />
-        {products?.map((product, index) => (
-          index < 16 && (
-            <div className='box-products' key={product.id}>
-              <Image
-                loader={({src}) => src}
-                unoptimized={true}
-                width={200}
-                height={200}
-                className='img-product'
-                src={product.thumbnail.replace(/http:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
-                alt=''
-                priority
-              />
-              <span className='name-product'>{(product.title)}</span>
-              <span className='price-red'>
-                <span>de </span><span>{(product.original_price ? 'R$ ' + (product.original_price).toFixed(2) : formatCurrency(product.price * 2))}</span><span> por:</span>
-              </span>
-              <span className='green-price-product'>
-                <span className='green-span'>á vista </span>
-                <span className='price-green'>{formatCurrency(product.price)}</span>
-              </span>
-              <span className='span-parcel'>
-                em até 12x de R${((product.price / 12) * 1.2).toFixed(2)} sem juros no cartão
-              </span>
-            </div>
-          )
-        ))}
-
-      </section>
-      }
-      
+          <Image
+            className='top-img'
+            src={TopImg}
+            alt=''
+          />
+          {products?.map((product, index) => (
+            index < 16 && (
+              <div className='box-products'
+                onClick={() => console.log('cliquei')}
+              key={product.id}>
+                <Image
+                  loader={({src}) => src}
+                  unoptimized={true}
+                  width={200}
+                  height={200}
+                  className='img-product'
+                  src={product.thumbnail.replace(/http:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
+                  alt=''
+                  priority
+                />
+                <span className='name-product'>{(product.title)}</span>
+                <span className='price-red'>
+                  <span>de {(product.original_price ? 'R$ ' + (product.original_price).toFixed(2) : formatCurrency(product.price * 2))} por:</span>
+                </span>
+                <span className='green-price-product'>
+                  <span className='green-span'>á vista </span>
+                  <span className='price-green'>{formatCurrency(product.price)}</span>
+                </span>
+                <span className='span-parcel'>
+                  em até 12x de R${((product.price / 12) * 1.2).toFixed(2)} sem juros no cartão
+                </span>
+              </div>
+            )
+          ))}
+        </section>
+      }  
     </>
   )
 }

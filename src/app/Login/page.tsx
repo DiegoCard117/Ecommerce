@@ -20,6 +20,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from 'next/navigation';
 
 import imgLogin from '../../img/imgLogin.gif'
+import Head from "next/head";
 
 function Login() {
 
@@ -36,6 +37,9 @@ function Login() {
 
   return (
     <>
+      <Head>
+        <title>Login | Ecommerce</title>
+      </Head>
       <HeaderDesktop />
       <Header />
       <section className="containerLogin">
