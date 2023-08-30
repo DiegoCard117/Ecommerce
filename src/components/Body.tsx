@@ -7,10 +7,13 @@ import Image from "next/image"
 import { useContext, useEffect, useState } from 'react';
 import { SearchContext } from '@/contexts/SearchProvider';
 import formatCurrency from '@/utils/formatCurrency';
+import { useRouter } from 'next/navigation';
 
 import Loading from './Loading';
 
 export default function Body() {
+
+  const router = useRouter()
 
   const {products , setProducts} = useContext(SearchContext)
   const [loading, setLoading] = useState(true)
@@ -33,8 +36,9 @@ export default function Body() {
           />
           {products?.map((product, index) => (
             index < 16 && (
-              <div className='box-products'
-                onClick={() => console.log('cliquei')}
+              <div
+                className='box-products'
+                onClick={() => router.push(`/Product/${product.id}`)}
               key={product.id}>
                 <Image
                   loader={({src}) => src}
