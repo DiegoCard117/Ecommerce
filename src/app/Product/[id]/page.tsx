@@ -2,10 +2,12 @@
 import Header from '@/components/Header';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import HeaderDesktop from '@/components/HeaderDesktop';
 
 interface Product {
   id: string
   thumbnail : string
+  title : string
 }
 
 interface Props {
@@ -13,8 +15,8 @@ interface Props {
 }
 
 export default function Product({ params } : Props) {
-  const [products, setProducts] = useState([]); 
-console.log(products[0]['thumbnail'])
+  const [products, setProducts] = useState<Product[]>([]); 
+  //console.log(products[1]['thumbnail'])
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -32,14 +34,21 @@ console.log(products[0]['thumbnail'])
   return (
     <>
       <Header />
-      <p>{products.length > 1 ? products[0]['id'] : ''}</p>
-      <p>{products.length > 1 ? products[0]['title'] : ''}</p>
-      <Image
-        src={products.length > 1 ? products[0]['thumbnail'] : ''}
-        alt={''}
-        width={100}
-        height={100}
-      />
+      <HeaderDesktop />
+      <div className="containerProduct">
+        {products.length > 0 && (
+          <>
+            <p>{products[0].id}</p>
+            <p>{products[0].title}</p>
+            <Image
+              src={products[0].thumbnail.replace(/http2:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
+              alt={''}
+              width={200}
+              height={200}
+            />
+          </>
+        )}
+      </div>
     </>
   );
 }
