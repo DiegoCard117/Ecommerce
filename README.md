@@ -8,13 +8,13 @@ This is a frontend project for an E-commerce website built with Next.js, TypeScr
 
 - **Product Listing:** Browse through a wide range of products with detailed descriptions and images.
 
-- **Product Details:** View detailed information about each product, including price, specifications, and customer reviews.
+- **Product Details:** View detailed information about each product, including price, specifications, and customer reviews.(nearly)
 
-- **Shopping Cart:** Add products to your cart and proceed to checkout when ready.
+- **Shopping Cart:** Add products to your cart and proceed to checkout when ready.(coming soon)
 
 - **User Authentication:** Sign up and log in to manage your profile and orders.
 
-- **Order History:** View your order history and track the status of your deliveries.
+- **Order History:** View your order history and track the status of your deliveries.(coming soon)
 
 - **Search Functionality:** Easily search for products using keywords or categories.
 
