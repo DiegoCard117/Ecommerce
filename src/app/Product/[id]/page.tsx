@@ -25,15 +25,21 @@ interface Props {
 }
 
 export default function Product({ params } : Props) {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product>({ 
+    id: '',
+    thumbnail: '',
+    title: '',
+    original_price: 0,
+    price: 0
+  });
   const [loading, setLoading] = useState(true) 
-  //console.log(products[1]['thumbnail'])
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${params.id}`);
+        const response = await fetch(`https://api.mercadolibre.com/items/${params.id}`);
         const data = await response.json();
-        setProducts(data.results);
+        setProducts(data);
+        //console.log(products)
         setLoading(false)
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
@@ -45,40 +51,39 @@ export default function Product({ params } : Props) {
 
   return (
     <>
+
       <Header />
       <HeaderDesktop />
       {loading && <Loading/> || 
       <div className="containerProduct">
-        {products.length > 0 && (
-          <div className='productDetails'>
+        <div className='productDetails'>
+          <Image
+            className='imgProductDetails'
+            src={products.thumbnail.replace(/http2:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
+            alt={''}
+            width={250}
+            height={250}
+          />
+          <p className='title'>{products.title}</p>
+          <span className='spanRed'>de R$ {products.original_price ? products.original_price : (products.price * 1.7)} por:</span>
+          <span className='spanGreen'>à vista</span>
+          <span className='price'>R$ {(products.price).toFixed(2)}</span>
+          <span className='spanOu'>ou</span>
+          <span className='priceRed'>R$ {(products.price * 1.2).toFixed(2)}</span>
+          <span className='divisor'>em até 12x de R$ <span className='spanRed'>{((products.price *1.2) / 12).toFixed(2)}</span> sem juros no cartão</span>
+          <button className='btnBuy'>
             <Image
-              className='imgProductDetails'
-              src={products[0].thumbnail.replace(/http2:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
-              alt={''}
-              width={250}
-              height={250}
+              src={addcart}
+              alt=''
+              width={30}
+              height={30} 
             />
-            <p className='title'>{products[0].title}</p>
-            <span className='spanRed'>de R$ {products[0].original_price ? products[0].original_price : (products[0].price * 1.7)} por:</span>
-            <span className='spanGreen'>à vista</span>
-            <span className='price'>R$ {(products[0].price).toFixed(2)}</span>
-            <span className='spanOu'>ou</span>
-            <span className='priceRed'>R$ {(products[0].price * 1.2).toFixed(2)}</span>
-            <span className='divisor'>em até 12x de R$ <span className='spanRed'>{((products[0].price *1.2) / 12).toFixed(2)}</span> sem juros no cartão</span>
-            <button className='btnBuy'>
-              <Image
-                src={addcart}
-                alt=''
-                width={30}
-                height={30} 
-              />
-              <div>
-                <span className='btnTextBig'>Comprar</span>
-                <span className='btnTextSmall'>colocar no carrinho</span>
-              </div>
-            </button>
-          </div> 
-        )}
+            <div>
+              <span className='btnTextBig'>Comprar</span>
+              <span className='btnTextSmall'>colocar no carrinho</span>
+            </div>
+          </button>
+        </div> 
       </div>}
       <Footer/>
     </>
@@ -87,6 +92,8 @@ export default function Product({ params } : Props) {
 
 
 /*
+
+
 export async function getStaticProps(context) {
   const { params } = context;
   const data = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${params}`);

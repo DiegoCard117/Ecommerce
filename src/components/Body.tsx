@@ -38,7 +38,7 @@ export default function Body() {
             index < 16 && (
               <div
                 className='box-products'
-                onClick={() => router.push(`/Product/${product.title}`)}
+                onClick={() => router.push(`/Product/${product.id}`)}
               key={product.id}>
                 <Image
                   loader={({src}) => src}
