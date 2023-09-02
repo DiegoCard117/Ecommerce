@@ -6,10 +6,12 @@ import React, { useContext } from 'react';
 
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '@/contexts/AuthContext';
+import Head from 'next/head';
 
 export default function Perfil() {
   const { signOut } = useContext(AuthContext)
   const router = useRouter()
+  const { user } = useContext(AuthContext)
 
   const handleLogout = async () => {
     try {
@@ -22,6 +24,9 @@ export default function Perfil() {
 
   return (
     <>
+      <Head>
+        <title>{user ? `${user.name}` : 'Perfil | Ecoomerce'}</title>
+      </Head>
       <Header/>
       <HeaderDesktop/>
       <h1>Perfil aqui</h1>

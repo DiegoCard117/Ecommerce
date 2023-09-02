@@ -10,6 +10,7 @@ import Image from "next/image";
 
 import '../../css/cadastro.scss'
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Cadastro() {
   
@@ -26,6 +27,9 @@ export default function Cadastro() {
 
   return (
     <>
+      <Head>
+        <title>Cadastro | Ecoomerce</title>
+      </Head>
       <Header/>
       <HeaderDesktop/>
       <div className="containerCadastro">

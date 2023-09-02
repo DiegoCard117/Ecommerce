@@ -17,6 +17,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
 import '../../../css/pageProduct.scss'
+import Head from 'next/head';
 
 interface Pictures {
   url : string
@@ -64,7 +65,9 @@ export default function Product({ params } : Props) {
 
   return (
     <>
-
+      <Head>
+        <title>Product | Ecoomerce</title>
+      </Head>
       <Header />
       <HeaderDesktop />
       {loading ? (
