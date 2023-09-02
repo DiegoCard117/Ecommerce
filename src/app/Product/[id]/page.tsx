@@ -10,7 +10,18 @@ import addcart from '../../../img/addcart.svg'
 
 //import formatCurrency from '@/utils/formatCurrency';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
 import '../../../css/pageProduct.scss'
+
+interface Pictures {
+  url : string
+  id: string
+}
 
 interface Product {
   id: string
@@ -18,6 +29,7 @@ interface Product {
   title : string
   original_price: number
   price: number
+  pictures : Pictures[]
 }
 
 interface Props {
@@ -30,7 +42,8 @@ export default function Product({ params } : Props) {
     thumbnail: '',
     title: '',
     original_price: 0,
-    price: 0
+    price: 0,
+    pictures : []
   });
   const [loading, setLoading] = useState(true) 
   useEffect(() => {
@@ -54,16 +67,33 @@ export default function Product({ params } : Props) {
 
       <Header />
       <HeaderDesktop />
-      {loading && <Loading/> || 
-      <div className="containerProduct">
+      {loading ? (
+        <Loading/>
+      ) : (
+        <div className="containerProduct">
         <div className='productDetails'>
-          <Image
-            className='imgProductDetails'
-            src={products.thumbnail.replace(/http2:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
-            alt={''}
-            width={250}
-            height={250}
-          />
+          <Swiper
+            modules={[Autoplay , Pagination]}
+            className='slideBox'
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay
+          >
+            {products.pictures.map(item => (
+              <SwiperSlide
+                className='slides'
+                key={item.id}>
+                <Image
+                  className='imgProductDetails'
+                  src={item.url.replace(/http2:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')}
+                  alt={''}
+                  width={250}
+                  height={250}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
           <p className='title'>{products.title}</p>
           <span className='spanRed'>de R$ {products.original_price ? products.original_price : (products.price * 1.7)} por:</span>
           <span className='spanGreen'>à vista</span>
@@ -84,7 +114,8 @@ export default function Product({ params } : Props) {
             </div>
           </button>
         </div> 
-      </div>}
+      </div>
+      )}
       <Footer/>
     </>
   );
@@ -93,7 +124,7 @@ export default function Product({ params } : Props) {
 
 /*
 
-
+.replace(/http2:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg')
 export async function getStaticProps(context) {
   const { params } = context;
   const data = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${params}`);
