@@ -18,13 +18,14 @@ import 'swiper/css/autoplay';
 
 import '../../../css/pageProduct.scss'
 import Head from 'next/head';
+import { useShoppingCart } from '@/contexts/CartContext';
 
 interface Pictures {
   url : string
   id: string
 }
 
-interface Product {
+interface ProductPage {
   id: string
   thumbnail : string
   title : string
@@ -34,11 +35,14 @@ interface Product {
 }
 
 interface Props {
-  params: Product
+  params: ProductPage
 }
 
 export default function Product({ params } : Props) {
-  const [products, setProducts] = useState<Product>({ 
+
+  const {increaseCartQuantity, cartItems} = useShoppingCart()
+
+  const [products, setProducts] = useState <ProductPage>({ 
     id: '',
     thumbnail: '',
     title: '',
@@ -65,6 +69,7 @@ export default function Product({ params } : Props) {
 
   return (
     <>
+      {console.log(cartItems)}
       <Head>
         <title>Product | Ecoomerce</title>
       </Head>
@@ -104,7 +109,15 @@ export default function Product({ params } : Props) {
           <span className='spanOu'>ou</span>
           <span className='priceRed'>R$ {(products.price * 1.2).toFixed(2)}</span>
           <span className='divisor'>em até 12x de R$ <span className='spanRed'>{((products.price *1.2) / 12).toFixed(2)}</span> sem juros no cartão</span>
-          <button className='btnBuy'>
+          <button
+            onClick={() => increaseCartQuantity([{
+              id : products.id,
+              quantity: 1,
+              title: products.title,
+              thumbnail: products.thumbnail,
+              price: products.price
+            }])}
+            className='btnBuy'>
             <Image
               src={addcart}
               alt=''
