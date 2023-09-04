@@ -149,4 +149,57 @@ body {
       }
     }
   }
+
+  .btnClearDiv {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    .btnClear {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+      padding: 0 10px;
+      border-radius: 5px;
+    }
+  
+    .btnClear:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .freteBox {
+    border-radius: 5px;
+    background: #D9D9D9;
+    padding: 5px;
+
+    h3 {
+      font-weight: normal;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+
+    .inputsFrete {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 5px ;
+
+      input, .btnCalcFrete {
+        background: #0c0c0c;
+        padding: 5px 15px;
+        color: #F1F2F5;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .btnCalcFrete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      }
+
+    }
+
+  }
 }

@@ -8,11 +8,12 @@ import Image from "next/image";
 
 import cart from '../../img/cart.svg'
 import trash from '../../img/trash.svg'
+import truck from '../../img/truck.svg'
 import formatCurrency from "@/utils/formatCurrency";
 import { useEffect, useState } from "react";
 
 export default function Cart() {
-const { cartItems, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart()
+const { cartItems, setCartItems, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart()
 
 const [totalPrice, setTotalPrice] = useState(0);
 
@@ -63,44 +64,71 @@ const frete = 0
             <p className="diviSpan">em até 12x de <span className="priceRed">{formatCurrency(((totalPrice + frete) * 1.2) / 12)}</span> sem juros no cartão</p>
           </div>
         </div>
-      {cartItems?.map(item => (
-        <div
-          key={item.id}
-          className="containerCartItem"
-        >
-          <div className="CartItemLeft">
-            <Image
+        {cartItems?.map(item => (
+          <div
+            key={item.id}
+            className="containerCartItem"
+            >
+            <div className="CartItemLeft">
+              <Image
 
-              src={typeof item.thumbnail === 'string' ? item.thumbnail.replace(/http:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg') : ''}
-              alt=""
-              width={90}
-              height={100}
-            />
-          </div>
-          <div className="CartItemRight">
-            <p className="title">{item.title}</p>
-            <div className="btnCartItem">
-              <button onClick={() => decreaseCartQuantity(item.id)}>-</button>
-              <p>{item.quantity}</p>
-              <button onClick={() => increaseCartQuantity([{
-                  id : item.id,
-                  quantity: 1,
-                }])}>+
-              </button>
-              <button
-                onClick={() => removeFromCart(item.id)}
-              >
-                <Image
-                  src={trash}
-                  alt=""
-                  width={18}
-                  height={18}
-                />
-              </button>
+                src={typeof item.thumbnail === 'string' ? item.thumbnail.replace(/http:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg') : ''}
+                alt=""
+                width={90}
+                height={100}
+              />
+            </div>
+            <div className="CartItemRight">
+              <p className="title">{item.title}</p>
+              <div className="btnCartItem">
+                <button onClick={() => decreaseCartQuantity(item.id)}>-</button>
+                <p>{item.quantity}</p>
+                <button onClick={() => increaseCartQuantity([{
+                    id : item.id,
+                    quantity: 1,
+                  }])}>+
+                </button>
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  <Image
+                    src={trash}
+                    alt=""
+                    width={18}
+                    height={18}
+                  />
+                </button>
+              </div>
             </div>
           </div>
+        ))}
+        <div className="btnClearDiv">
+          <button
+            className="btnClear"
+            onClick={()=> setCartItems([])}>
+            <Image
+              src={trash}
+              alt=""
+            />
+            Limpar Carrinho
+          </button>
         </div>
-      ))}
+        <div className="freteBox">
+          <h3>Frete e Prazos</h3>
+          <div className="inputsFrete">
+            <input type="number" placeholder="Cep*" />
+            <button className="btnCalcFrete">
+              <Image
+                src={truck}
+                alt=""
+                width={20}
+                height={20}
+              />
+              Calcular
+            </button>
+          </div>
+        </div>
+        <button className="btnFinale">Finalizar Pedido</button>
       </div>
     </>
   )

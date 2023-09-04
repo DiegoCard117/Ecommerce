@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, ReactNode, createContext, useContext } from "react";
+import React, { useState, ReactNode, createContext, useContext, SetStateAction, Dispatch } from "react";
 
 type ShoppingCartProviderProps = {
   children: ReactNode
@@ -22,6 +22,7 @@ type ShoppingCartContextType = {
   decreaseCartQuantity: (id : string) => void
   removeFromCart: (id : string) => void
   cartItems: Array<CartItem>
+  setCartItems : Dispatch<SetStateAction<CartItem[]>>
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContextType)
@@ -36,23 +37,6 @@ export function ShoppingCartProvider({ children } : ShoppingCartProviderProps) {
   function getItemQuantity(id: string) {
     return cartItems.find(item => item.id === id)?.quantity || 0
   }
-/*
-  function increaseCartQuantity(id: string) {
-    setCartItems(currentItems => {
-      if (currentItems.find(item => item.id === id) == null) {
-        return [...currentItems, {id, quantity: 1}]
-      } else {
-        return currentItems.map(item => {
-          if (item.id === id) {
-            return {...item, quantity: item.quantity + 1}
-          } else {
-            return item
-          }
-        })
-      }
-    })
-  }
-*/
 
 function increaseCartQuantity(itemsToAdd: CartItem[]) {
   setCartItems(currentItems => {
@@ -99,7 +83,8 @@ function increaseCartQuantity(itemsToAdd: CartItem[]) {
       increaseCartQuantity,
       decreaseCartQuantity,
       removeFromCart,
-      cartItems
+      cartItems,
+      setCartItems
       }}>
       {children}
     </ShoppingCartContext.Provider>
