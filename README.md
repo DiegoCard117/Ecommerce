@@ -33,8 +33,8 @@ Follow these steps to get the project up and running on your local machine.
 1. **Clone the repository:**
 
    ```bash
-     git clone https://github.com/yourusername/e-commerce-frontend.git
-     cd e-commerce-frontend
+     git clone [https://github.com/DiegoCard117/Ecommerce.git]
+     cd Ecoomerce
 
 2. **Install dependencies:**
 
