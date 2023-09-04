@@ -1,5 +1,5 @@
 import '../css/globals.scss'
-import '../css/desktop.scss'
+import '../css/font.scss'
 
 import { SearchProvider } from '@/contexts/SearchProvider'
 

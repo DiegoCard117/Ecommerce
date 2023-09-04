@@ -14,8 +14,10 @@ import { SearchContext } from '@/contexts/SearchProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '@/contexts/AuthContext';
+import { useShoppingCart } from '@/contexts/CartContext';
 
 export default function Header() {
+  const { cartItems } = useShoppingCart()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [ MenuClass, setMenuClass] = useState('close')
@@ -60,21 +62,23 @@ export default function Header() {
   }
 
   const handleSearch = async () => {
+    router.push('/Home')
     const products = await fetchProducts(text)
     setProducts(products)
-    router.push('/Home')
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value); // Atualize o estado text com o valor do campo de entrada
   }
 
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <>
       <header id='header responsivo'>
         <nav>
           <div className='logo'>
-            <Link href={'/'}><h1 className='logo-title'>Ecommerce</h1></Link>
+            <Link className="linkLogo" href={'/'}><h1 className='logo-title'>Ecommerce</h1></Link>
             <div className='btn-menu-top'>
               <Link className='favorites btn-nav' href={user ? "/Perfil" : "/Login"}>
                 <Image
@@ -101,10 +105,10 @@ export default function Header() {
               <Link className='cart btn-nav' href={'/Cart'}>
               <Image
                   src={cart}
-                  alt='favoritos'
+                  alt='Carrinho'
                 />
                 <span>Carrinho</span>
-                <div></div>
+                {totalQuantity > 0 ? <div className='spanQuantidadeCart'>{totalQuantity}</div> : ''}
               </Link>
             </div>
           </div>

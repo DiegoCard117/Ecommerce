@@ -21,7 +21,7 @@ type ShoppingCartContextType = {
   increaseCartQuantity: (itemsToAdd: CartItem[]) => void;
   decreaseCartQuantity: (id : string) => void
   removeFromCart: (id : string) => void
-  cartItems: unknown
+  cartItems: Array<CartItem>
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContextType)

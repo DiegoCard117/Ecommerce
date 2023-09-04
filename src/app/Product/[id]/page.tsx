@@ -85,7 +85,7 @@ export default function Product({ params } : Props) {
             className='slideBox'
             slidesPerView={1}
             pagination={{ clickable: true }}
-            autoplay
+            autoplay = {{ delay: 3000 }}
           >
             {products.pictures.map(item => (
               <SwiperSlide
