@@ -11,8 +11,11 @@ import { SearchContext } from "@/contexts/SearchProvider";
 import fetchProducts from "@/Api/fetchProducts";
 import Link from "next/link";
 import { AuthContext } from "@/contexts/AuthContext";
+import { useShoppingCart } from "@/contexts/CartContext";
 
 export default function HeaderDesktop() {
+
+  const { cartItems } = useShoppingCart()
 
   const [shouldRender, setShouldRender] = useState(false)
 
@@ -51,10 +54,12 @@ export default function HeaderDesktop() {
     return null
   }
 
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <>
       <header id="header" className="header-desktop">
-          <Link href="/"><h1 className="titleSite">Ecommerce</h1></Link>
+          <Link className="linkLogo" href="/"><h1 className="titleSite">Ecommerce</h1></Link>
           <input type="text" name="" id="search"
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
@@ -90,7 +95,7 @@ export default function HeaderDesktop() {
               alt=""
             />
             <p>Carrinho</p>
-            <div className="quantidade-compra"><p>4</p></div>
+            {totalQuantity > 0 ? <div className='quantidade-compra'>{totalQuantity}</div> : ''}
           </Link>
       </header>
     </>

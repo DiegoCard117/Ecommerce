@@ -101,3 +101,178 @@ body {
     }
   }
 }
+
+
+@media screen and (min-width: 720px){
+  .containerPageProduct{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    position: relative;
+    height: calc(100vh - 150px);
+    width: 90%;
+    margin-top: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.301);
+    border-radius: 10px;
+    
+    .leftBox {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px 0px 0px 10px;
+      background: #F1F2F5;
+      
+      .slideBox {
+        border-radius: 10px;
+        width: 30%;
+        height: 500px;
+        position: absolute;
+        top: 20%;
+        background: #FFF;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.301);
+      }
+
+    }
+    .rightBox { 
+      width: 50%;
+      border-radius: 0px 10px 10px 0px;
+      background: #F1F2F5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .boxTitle {
+        display: flex;
+        align-items: center;
+        height: 20%;
+
+        .title {
+          font-weight: normal;
+          font-size: 36px;
+        }
+      }
+
+      .boxDetails {
+        display: flex;
+        height: 80%;
+        //outline: 1px solid red;
+        width: 100%;
+        margin-top: 20px;
+
+        .prices {
+          padding: 50px 20px 0px 20px;
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          //outline: 1px solid red;
+
+          span, p {
+            display: block;
+            font-size: 20px;
+          }
+
+          .spanRed {
+            color: red;
+            margin-bottom: 20px;
+          }
+
+          .spanGreen, .price {
+            color: green;
+          }
+          .price {
+            font-size: 40px;
+          }
+          .spanOu {margin-bottom: 20px;}
+          .priceRed {color: red;}
+          .divisor {
+            font-size: 1em;
+            display: flex;
+            width: 100%;
+
+            .spanRed {
+              font-size: 1em;
+              margin: 0px 5px 0em 5px ;
+            }
+          }
+        }
+
+        .boxPagamento {
+          width: 100%;
+          background: #FFF;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          border-radius: 5px;
+          align-self: center;
+          margin-top: 35%;
+          h2 {
+            color: #0c0c0c;
+          }
+          ul {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            li {
+              list-style: none;
+              img {
+                filter: invert(100%);
+              }
+            }
+          }
+        }
+      }
+
+      .btnAndParcel {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .topRightParcel {
+          display: flex;
+          justify-content: center;
+          margin-top: 50px;
+          width: 100%;
+
+          button {
+            border: none;
+            background: green;
+            border-radius: 5px;
+            display: flex;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            width: 70%;
+
+            div {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: start;
+              .btnTextBig {
+                font-size: 20px;
+              }
+            }
+          }
+
+          button:hover {
+            opacity: 0.7;
+          }
+        } 
+      }
+
+      .boxDivisor {
+        //outline: 1px solid red;
+        width: 80%;
+        margin-top: 55px;
+        padding: 10px;
+        background: #FFF;
+        border-radius: 5px;
+      }
+    }
+  }
+}

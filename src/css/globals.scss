@@ -26,6 +26,9 @@
     z-index: -1;
   }
 
+
+  
+
   :root {
     --secondary: #384359;
     --grey: #1E2128;
@@ -371,7 +374,11 @@
 /*Desktop abaixo*/
   @media screen and (min-width: 720px){
 
+    body {
+      overflow-x: hidden;
+    }
     .containerHome {
+      width: 100%;
       display: grid;
       grid-template-areas:
        'header header'
@@ -390,19 +397,20 @@
       min-height: 80px;
       padding: 5px;
       
-      .titleSite {
+      .linkLogo {
         color: #0C0C0C;
+        text-decoration: none;
       }
     
       #search {
         border: none;
         border-radius: 5px;
-        background: var(--black);
+        background: #0c0c0c;
     
         min-width: 40%;
         height: 40px;
-        background: var(--black) url(../img/search-icon.svg) no-repeat right;
-        color: var(--white);
+        background: #0c0c0c url(../img/search-icon.svg) no-repeat right;
+        color: #F1F2F5;
         padding-left: 10px;
       }
     
@@ -429,13 +437,13 @@
         }
     
         .quantidade-compra {
-          background: var(--black);
-          color: var(--white);
+          background: #0c0c0c;
+          color: #F1F2F5;
         }
     
         .quantidade-favoritos {
-          background: var(--white);
-          color: var(--black);
+          background: #F1F2F5;
+          color: #0c0c0c;
         }
   
       }
@@ -445,8 +453,8 @@
       }
     
       .profile,  .contato,  .favoritos {
-        background: var(--black);
-        color: var(--white);
+        background: #0C0C0C;
+        color: #F1F2F5;
       }
     }
   
@@ -488,11 +496,11 @@
       display: flex ; 
       flex-wrap: wrap;
       justify-content: center;
+
       
       .top-img {
-        width: 100%;
+        width: 98%;
         object-fit: cover;
-        
       }
       
       .box-products {
@@ -524,7 +532,7 @@
           align-self: start;
           span {
             font-size: 10px;
-            color: var(--red);
+            color:red;
           }
         }
   
@@ -534,7 +542,7 @@
             position: relative;
             align-self: start;
             display: block;
-            color: var(--green);
+            color: green;
             font-size: 20px;
           }
     
@@ -580,7 +588,7 @@
         border-radius: 5px;
         display: flex;
         width: 95%;
-        background: var(--black);
+        background: #0c0c0c;
     
         .box-footer-contact {
           width: 33%;
@@ -592,6 +600,7 @@
   
         p {
           padding: 10px;
+          color: #FFF;
         }
   
         .p-horarios {
@@ -602,9 +611,10 @@
       }
     
       .footer-true {
-        background: var(--secondary);
+        background: #384359;
         width: 100%;
         padding: 15px;
+        color: #FFF;
     
         .top-footer-true {
           display: flex;
@@ -653,12 +663,13 @@
       }
     
       .footer-bottom {
+        color: #FFF;
         width: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
         padding: 30px 0px;
-        background: var(--black);
+        background: #0c0c0c;
         text-align: center;
   
         .btn-footer-tohome {
@@ -669,7 +680,7 @@
         }
   
         img {
-          background: var(--black);
+          background: #0c0c0c;
         }
       }
     }

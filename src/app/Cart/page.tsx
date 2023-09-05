@@ -46,10 +46,18 @@ const frete = 0
         <div className="boxResume">
           <h2>Resumo</h2>
 
-          <div className="subtotal">
-            <h3>Subtotal</h3>
-            <h3>{formatCurrency(totalPrice)}</h3>
-          </div>
+          {cartItems.map((item) => (
+            <ul
+              className="subtotal"
+              key={item.id}>
+              <li >
+                {item.title} : {item.quantity}
+              </li>
+              { item.price !== undefined && (
+                <li>R${(item.price * item.quantity)}</li>
+              )}
+            </ul>
+          ))}
 
           <div className="total">
             <h3>Total</h3>
@@ -71,7 +79,6 @@ const frete = 0
             >
             <div className="CartItemLeft">
               <Image
-
                 src={typeof item.thumbnail === 'string' ? item.thumbnail.replace(/http:/gi, 'https:').replace(/\w\.jpg/gi, 'W.jpg') : ''}
                 alt=""
                 width={90}
@@ -116,7 +123,7 @@ const frete = 0
         <div className="freteBox">
           <h3>Frete e Prazos</h3>
           <div className="inputsFrete">
-            <input type="number" placeholder="Cep*" />
+            <input type="text" placeholder="Cep*" />
             <button className="btnCalcFrete">
               <Image
                 src={truck}
