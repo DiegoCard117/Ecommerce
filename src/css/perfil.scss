@@ -84,6 +84,14 @@ body {
     .endereço {
       grid-area: endereço;
     }
+
+    .cancel {
+      color: red;
+    }
+
+    .concluido {
+      color: green;
+    }
   }
 
   .todosPedidos, .signOut {

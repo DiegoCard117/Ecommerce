@@ -80,7 +80,7 @@ export default function Perfil() {
           </div>
           <div className="status">
             <h3>Status</h3>
-            <p>Concluido</p>
+            <p className='concluido'>Concluido</p>
           </div>
           <div className="pagamento">
             <h3>Pagamento</h3>
