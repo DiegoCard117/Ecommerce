@@ -125,10 +125,10 @@ body {
       
       .slideBox {
         border-radius: 10px;
-        width: 30%;
+        width: 60%;
         height: 500px;
-        position: absolute;
-        top: 20%;
+        //position: absolute;
+        //top: 20%;
         background: #FFF;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.301);
       }
@@ -207,7 +207,7 @@ body {
           padding: 20px;
           border-radius: 5px;
           align-self: center;
-          margin-top: 35%;
+          margin-top: 50px;
           h2 {
             color: #0c0c0c;
           }
@@ -234,7 +234,7 @@ body {
         .topRightParcel {
           display: flex;
           justify-content: center;
-          margin-top: 50px;
+          //margin-top: 50px;
           width: 100%;
 
           button {

@@ -389,6 +389,7 @@
     }
   
     .header-desktop {
+      background: #F1F2F5;
       grid-area: header;
       display: flex;
       justify-content: space-around;
@@ -496,7 +497,6 @@
       display: flex ; 
       flex-wrap: wrap;
       justify-content: center;
-
       
       .top-img {
         width: 98%;
@@ -504,6 +504,7 @@
       }
       
       .box-products {
+        background: #FFF;
         margin: 3% 0% 0% 3%;
         height: 450px;
         width: 300px;
@@ -513,7 +514,7 @@
         justify-content: center;
         padding: 20px;
         position: relative;
-        box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.19);
+        box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.096);
         border-radius: 10px;
         transition: 0.5 ease;
         cursor: pointer;
