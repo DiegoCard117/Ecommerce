@@ -1,10 +1,10 @@
 'use client'
-import Header from "@/components/Header/Header";
-import HeaderDesktop from "@/components/HeaderDesktop/HeaderDesktop";
+import Header from "@/components/Header";
+import HeaderDesktop from "@/components/HeaderDesktop";
+import '../../css/cart.scss'
 import Head from "next/head";
 import { useShoppingCart } from "@/contexts/CartContext";
 import Image from "next/image";
-import './cart.scss'
 
 import cart from '../../img/cart.svg'
 import trash from '../../img/trash.svg'

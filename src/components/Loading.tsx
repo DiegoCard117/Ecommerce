@@ -1,5 +1,5 @@
 import Image from "next/image"
-import loading from '../../img/loading.svg'
+import loading from '../img/loading.svg'
 
 export default function Loading() {
   return (

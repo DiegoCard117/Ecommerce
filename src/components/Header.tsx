@@ -1,10 +1,10 @@
 "use client";
 
-import menu from '../../img/menu.svg'
-import cart from '../../img/cart.svg'
-import favorites from '../../img/heart.svg'
-import profile from '../../img/profile.svg'
-import interrogaçao from '../../img/interrogaçao.svg'
+import menu from '../img/menu.svg'
+import cart from '../img/cart.svg'
+import favorites from '../img/heart.svg'
+import profile from '../img/profile.svg'
+import interrogaçao from '../img/interrogaçao.svg'
 
 import Image from 'next/image'
 import React, { useEffect, useState, useContext } from 'react';
@@ -16,9 +16,7 @@ import { useRouter } from 'next/navigation';
 import { AuthContext } from '@/contexts/AuthContext';
 import { useShoppingCart } from '@/contexts/CartContext';
 
-import './headerMobile.scss'
-
-export default function HeaderMobile() {
+export default function Header() {
   const { cartItems } = useShoppingCart()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)

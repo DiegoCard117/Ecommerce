@@ -1,4 +1,6 @@
 'use client'
+import Header from "@/components/Header";
+import HeaderDesktop from "@/components/HeaderDesktop";
 
 import google from '../../img/google.svg'
 import face from '../../img/face.svg'
@@ -6,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 
-import './cadastro.scss'
+import '../../css/cadastro.scss'
 import Link from "next/link";
 import Head from "next/head";
 
@@ -28,6 +30,8 @@ export default function Cadastro() {
       <Head>
         <title>Cadastro | Ecoomerce</title>
       </Head>
+      <Header/>
+      <HeaderDesktop/>
       <div className="containerCadastro">
         <Link
           href={'/Login'}

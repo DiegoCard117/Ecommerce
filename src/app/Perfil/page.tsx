@@ -1,7 +1,9 @@
-'use client';
+'use client'
 
-import './perfil.scss';
+import '../../css/perfil.scss'
 
+import Header from '@/components/Header';
+import HeaderDesktop from '@/components/HeaderDesktop';
 import React, { useContext } from 'react';
 
 import { useRouter } from 'next/navigation';
@@ -10,31 +12,33 @@ import Head from 'next/head';
 
 import Image from 'next/image';
 
-import gear from '../../img/gear.svg';
-import cart from '../../img/cart.svg';
-import Footer from '@/components/Footer/Footer';
+import gear from '../../img/gear.svg'
+import cart from '../../img/cart.svg'
+import Footer from '@/components/Footer';
 
 export default function Perfil() {
-  const { signOut } = useContext(AuthContext);
-  const router = useRouter();
-  const { user } = useContext(AuthContext);
+  const { signOut } = useContext(AuthContext)
+  const router = useRouter()
+  const { user } = useContext(AuthContext)
 
   const handleLogout = async () => {
     try {
-      await signOut();
-      router.push('/Login');
+      await signOut()
+      router.push('/Login')
     } catch (error) {
-      console.error('Erro ao fazer Logout: ', error);
+      console.error('Erro ao fazer Logout: ', error)
     }
-  };
+  }
 
   return (
     <>
       <Head>
         <title>{user ? `${user.name}` : 'Perfil | Ecoomerce'}</title>
       </Head>
+      <Header/>
+      <HeaderDesktop/>
       {console.log(user?.avatar)}
-      {user !== null ? (
+      {user !== null ?(
         <div className='topPerfil'>
           <button
             className='btnGear'
@@ -46,7 +50,7 @@ export default function Perfil() {
           </button>
           <Image
             className='avatar'
-            loader={({ src }) => src}
+            loader={({src}) => src}
             src={user.avatar}
             alt=''
             width={140}
@@ -92,7 +96,7 @@ export default function Perfil() {
         <button className='todosPedidos'>Ver todos os pedidos</button>
         <button className='signOut' onClick={handleLogout}>SignOut</button>
       </div>
-      <Footer />
+      <Footer/>
     </>
-  );
+  )
 } 

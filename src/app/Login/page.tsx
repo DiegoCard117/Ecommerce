@@ -1,36 +1,38 @@
-'use client';
+'use client'
 
 import React from "react";
+import HeaderDesktop from "@/components/HeaderDesktop";
 import Link from "next/link";
 import Image from "next/image";
 
-import locker from '../../img/locker.svg';
+import locker from '../../img/locker.svg'
 
-import './login.scss';
+import '../../css/login.scss'
 
-import usuario from '../../img/user.svg';
-import eyeClose from '../../img/eyeClose.svg';
+import usuario from '../../img/user.svg'
+import eyeClose from '../../img/eyeClose.svg'
 
-import google from '../../img/google.svg';
-import face from '../../img/face.svg';
+import google from '../../img/google.svg'
+import face from '../../img/face.svg'
 
+import Header from "@/components/Header";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from 'next/navigation';
 
-import imgLogin from '../../img/imgLogin.gif';
+import imgLogin from '../../img/imgLogin.gif'
 import Head from "next/head";
 
 function Login() {
 
-  const { user, signInWithGoogle } = useAuth();
+  const { user, signInWithGoogle } = useAuth()
   const router = useRouter();
 
   async function login(e: { preventDefault: () => void; }) {
-    e.preventDefault();
-    if (!user) {
-      await signInWithGoogle();
+    e.preventDefault()
+    if(!user) {
+      await signInWithGoogle()
     }
-    router.push('/Home');
+    router.push('/Home')
   }
 
   return (
@@ -38,7 +40,8 @@ function Login() {
       <Head>
         <title>Login | Ecommerce</title>
       </Head>
-
+      <HeaderDesktop />
+      <Header />
       <section className="containerLogin">
         <div className="imgLogin">
           <Image
@@ -48,7 +51,7 @@ function Login() {
         </div>
         <div className="LoginRight">
           <div className="TopLogin">
-            <Image src={locker} alt={"cadeado"} />
+            <Image src={locker} alt={"cadeado"}/>
             <h2 className="titleLogin">Já tem uma conta?</h2>
             <h3 className="subTitleLogin">Informe seus dados para o login</h3>
           </div>
@@ -58,7 +61,7 @@ function Login() {
                 type="text"
                 className="inputEmailLogin"
                 placeholder="Email"
-              />
+                />
               <div className="inputSenhaLogin">
                 <input
                   type="password"
@@ -71,7 +74,7 @@ function Login() {
                     width={25}
                     height={25}
                     className="eye"
-                  />
+                    />
                 </button>
               </div>
               <button
@@ -84,10 +87,10 @@ function Login() {
                 className="socialLogin"
                 onClick={login}
               >
-                <Image src={google} alt={"Login com google"} />
+                <Image src={google} alt={"Login com google"}/>
               </button>
               <button className="socialLogin">
-                <Image src={face} alt={"Login com Facebook"} />
+                <Image src={face} alt={"Login com Facebook"}/>
               </button>
             </div>
           </div>
@@ -95,26 +98,26 @@ function Login() {
             <Link
               href={'/Recuperar'}
               className="LinkRecuperar"
-            >
+              >
               Esqueci minha senha
             </Link>
             <Link
               href='/Cadastro'
               className="LinkCadastro"
-            >
+              >
               <Image
                 src={usuario}
                 alt=""
                 width={50}
                 height={50}
-              />
+                />
               <h2>Novo Cliente?</h2>
             </Link>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }
 
 export default Login

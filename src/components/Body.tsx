@@ -1,66 +1,47 @@
-'use client';
+'use client'
 
 import fetchProducts from '@/Api/fetchProducts';
-import TopImg from '../../img/top-img.svg';
+import TopImg from '../img/top-img.svg'
 
-import Image from "next/image";
+import Image from "next/image"
 import { useContext, useEffect, useState } from 'react';
 import { SearchContext } from '@/contexts/SearchProvider';
 import formatCurrency from '@/utils/formatCurrency';
 import { useRouter } from 'next/navigation';
 
-import './body.scss'
-import Loading from '../Loading/Loading';
+import Loading from './Loading';
 
 export default function Body() {
 
-  const router = useRouter();
+  const router = useRouter()
 
-  const { products, setProducts } = useContext(SearchContext);
-  const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(16);
+  const {products , setProducts} = useContext(SearchContext)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchProducts('iphone').then((response) => {
-      setProducts(response);
-      setLoading(false);
-    });
-  }, [setProducts]);
-
-  const handleQuantityChange = (event: { target: { value: string; }; }) => {
-    const novaQuantidade = parseInt(event.target.value);
-    setQuantity(novaQuantidade);
-  };
+      setProducts(response)
+      setLoading(false)
+    })
+  }, [setProducts])
 
   return (
     <>
-      {(loading && <Loading />) ||
+      {(loading && <Loading/>) || 
         <section className="body-products">
           <Image
             className='top-img'
             src={TopImg}
             alt=''
           />
-          <div className='inputRadio'>
-            <div>
-              <p>Itens por pagina</p>
-            </div>
-            <div>
-              <select onChange={handleQuantityChange} value={quantity}>
-                <option value={16}>16</option>
-                <option value={20}>20</option>
-                <option value={32}>32</option>
-              </select>
-            </div>
-          </div>
           {products?.map((product, index) => (
-            index < quantity && (
+            index < 16 && (
               <div
                 className='box-products'
                 onClick={() => router.push(`/Product/${product.id}`)}
-                key={product.id}>
+              key={product.id}>
                 <Image
-                  loader={({ src }) => src}
+                  loader={({src}) => src}
                   unoptimized={true}
                   width={200}
                   height={200}
@@ -84,9 +65,9 @@ export default function Body() {
             )
           ))}
         </section>
-      }
+      }  
     </>
-  );
+  )
 }
 
 /*

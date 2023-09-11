@@ -1,9 +1,10 @@
-import Aside from "@/components/Aside/Aside";
-import Body from "@/components/Body/Body";
-import Footer from "@/components/Footer/Footer";
+import Aside from "@/components/Aside";
+import Body from "@/components/Body";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import HeaderDesktop from "@/components/HeaderDesktop";
 import Head from "next/head";
 import React from "react";
-import './globals.scss'
 
 function Home() {
 
@@ -13,6 +14,8 @@ function Home() {
         <title>Home | Ecommerce</title>
       </Head>
       <div className="containerHome">
+        <Header/>
+        <HeaderDesktop/>
         <Body/>
         <Aside/>
         <Footer/>

@@ -1,8 +1,10 @@
 "use client"
+import Header from '@/components/Header';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Footer from '@/components/Footer/Footer';
-import Loading from '@/components/Loading/Loading';
+import HeaderDesktop from '@/components/HeaderDesktop';
+import Footer from '@/components/Footer';
+import Loading from '@/components/Loading';
 
 import addcart from '../../../img/addcart.svg'
 import visa from '../../../img/visa.svg'
@@ -18,7 +20,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-import './pageProduct.scss'
+import '../../../css/pageProduct.scss'
 import Head from 'next/head';
 import { useShoppingCart } from '@/contexts/CartContext';
 
@@ -90,6 +92,8 @@ export default function Product({ params } : Props) {
       <Head>
         <title>Product | Ecoomerce</title>
       </Head>
+      <Header />
+      <HeaderDesktop />
       {loading ? (
         <Loading/>
       ) : (

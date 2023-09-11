@@ -1,22 +1,21 @@
 
 import Image from "next/image"
-import clock from '../../img/clock.svg'
-import phone from '../../img/phone.svg'
-import email from '../../img/email.svg'
+import clock from '../img/clock.svg'
+import phone from '../img/phone.svg'
+import email from '../img/email.svg'
 
-import loja from '../../img/loja-fisica.svg'
+import loja from '../img/loja-fisica.svg'
 
-import visa from '../../img/visa.svg'
-import american from '../../img/american.svg'
-import pix from '../../img/pix.svg'
-import master from '../../img/master.svg'
+import visa from '../img/visa.svg'
+import american from '../img/american.svg'
+import pix from '../img/pix.svg'
+import master from '../img/master.svg'
 
-import apple from '../../img/appstore.svg'
-import play from '../../img/playstore.svg'
+import apple from '../img/appstore.svg'
+import play from '../img/playstore.svg'
 
-import slide from '../../img/slide.svg'
+import slide from '../img/slide.svg'
 
-import './footer.scss'
 
 export default function Footer() {
   return (
