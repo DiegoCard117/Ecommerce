@@ -1,4 +1,3 @@
-import '../css/globals.scss'
 import '../css/font.scss'
 
 import { SearchProvider } from '@/contexts/SearchProvider'
@@ -8,6 +7,7 @@ import { AuthContextProvider } from '@/contexts/AuthContext'
 import { ShoppingCartProvider } from '@/contexts/CartContext'
 
 import '../services/firebase'
+import Header from '@/components/Header/Header';
 
 
 export default function RootLayout({
@@ -20,6 +20,7 @@ export default function RootLayout({
       <SearchProvider>
         <ShoppingCartProvider>
           <html lang="pt-br">
+            <Header/>
             <body>{children}</body>
           </html>
         </ShoppingCartProvider>

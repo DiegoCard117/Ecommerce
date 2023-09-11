@@ -1,0 +1,266 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  grid-area: footer;
+  width: 100%;
+  color: var(--white);
+  font-weight: normal;
+
+  .contact {
+    margin-bottom: 50px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    background: var(--black);
+
+    p {
+      color: var(--white);
+    }
+
+    .box-footer-contact {
+      padding: 70px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    p {
+      padding: 10px;
+    }
+
+    .p-horarios {
+      padding: 10px;
+      margin: 0 auto;
+      width: 70%;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .footer-true {
+    background: var(--secondary);
+    width: 100%;
+    padding: 15px;
+
+    .top-footer-true {
+      display: grid;
+      justify-content: space-between;
+      grid-template-areas:
+        'institucional duvidas'
+        'ajuda vazio'
+        'pagamento pagamento'
+        'apps apps';
+
+      .box1,
+      .box2,
+      .box3,
+      .box4,
+      .box5 {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 40px;
+
+        ul {
+          li {
+            padding: 15px 0px;
+          }
+        }
+      }
+
+      .box1 {
+        grid-area: institucional;
+      }
+
+      .box2 {
+        grid-area: duvidas;
+      }
+
+      .box3 {
+        grid-area: ajuda;
+      }
+
+      .box4 {
+        grid-area: pagamento;
+      }
+
+      .box5 {
+        grid-area: apps;
+      }
+
+      .box4,
+      .box5 {
+        display: flex;
+        align-items: center;
+
+        ul {
+          display: flex;
+          flex-direction: row;
+
+          li {
+            padding: 0px 15px;
+
+          }
+        }
+      }
+    }
+
+  }
+
+  .footer-bottom {
+    width: 100%;
+    background: var(--black);
+    text-align: center;
+    padding: 10px;
+
+    .btn-footer-tohome {
+      position: relative;
+      float: right;
+      background: transparent;
+      border: none;
+    }
+
+    img {
+      background: var(--black);
+    }
+  }
+
+}
+
+@media screen and (min-width:720px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    grid-area: footer;
+    width: 100%;
+    color: var(--white);
+    font-weight: normal;
+
+    .contact {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100px;
+      margin-bottom: 50px;
+      border-radius: 5px;
+      display: flex;
+      width: 95%;
+      background: #0c0c0c;
+
+      .box-footer-contact {
+        width: 33%;
+        padding: 70px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      p {
+        padding: 10px;
+        color: #FFF;
+      }
+
+      .p-horarios {
+        padding: 10px;
+        margin: 0 auto;
+        width: 70%;
+      }
+    }
+
+    .footer-true {
+      background: #384359;
+      width: 100%;
+      padding: 15px;
+      color: #FFF;
+
+      .top-footer-true {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding-top: 50px;
+
+        .box1,
+        .box2,
+        .box3,
+        .box4,
+        .box5 {
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 40px;
+
+
+          ul {
+            li {
+              list-style: none;
+              padding: 15px 0px;
+            }
+          }
+        }
+
+        .box1 {
+          grid-area: institucional;
+        }
+
+        .box2 {
+          grid-area: duvidas;
+        }
+
+        .box3 {
+          grid-area: ajuda;
+        }
+
+        .box4 {
+          grid-area: pagamento;
+        }
+
+        .box5 {
+          grid-area: apps;
+        }
+
+        .box4,
+        .box5 {
+          display: flex;
+          align-items: center;
+
+          ul {
+            display: flex;
+            flex-direction: row;
+
+            li {
+              padding: 0px 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-bottom {
+      color: #FFF;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 30px 0px;
+      background: #0c0c0c;
+      text-align: center;
+
+      .btn-footer-tohome {
+        position: relative;
+        float: right;
+        background: transparent;
+        border: none;
+      }
+
+      img {
+        background: #0c0c0c;
+      }
+    }
+  }
+}
