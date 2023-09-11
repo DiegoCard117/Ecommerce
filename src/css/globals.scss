@@ -75,7 +75,7 @@
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         border-bottom: 5px solid black;
-        top: -5px; /*localização. Experimente alterar para 'bottom'*/
+        top: -5px;
         left: 5%;
       }
 
@@ -176,6 +176,10 @@
     align-items: center;
     flex-direction: column;
     min-width: 100px;
+
+    .inputRadio {
+      display: none;
+    }
     
     .top-img {
       width: 100%;
@@ -190,7 +194,7 @@
       position: relative;
       width: 90%;
       height: 420px;
-      box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.19);
+      box-shadow: 0px 0px 10px 1px rgba(3, 3, 3, 0.096);
       border-radius: 10px;
       margin: 20px 0;
       cursor: pointer;
@@ -502,6 +506,26 @@
         width: 98%;
         object-fit: cover;
       }
+
+      .inputRadio {
+        position: absolute;
+        background: #F1F2F5;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        top: 105px;
+        left: 85%;
+    
+        div {
+          padding: 0px 5px;
+        }
+    
+        select {
+          border-radius: 5px;
+        }
+      }
       
       .box-products {
         background: #FFF;
@@ -514,7 +538,7 @@
         justify-content: center;
         padding: 20px;
         position: relative;
-        box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.096);
+        box-shadow: 0px 0px 10px 1px rgba(3, 3, 3, 0.096);
         border-radius: 10px;
         transition: 0.5 ease;
         cursor: pointer;

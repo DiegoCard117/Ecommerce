@@ -17,6 +17,7 @@ export default function Body() {
 
   const {products , setProducts} = useContext(SearchContext)
   const [loading, setLoading] = useState(true)
+  const [quantity, setQuantity] = useState(16);
 
   useEffect(() => {
     fetchProducts('iphone').then((response) => {
@@ -24,6 +25,12 @@ export default function Body() {
       setLoading(false)
     })
   }, [setProducts])
+
+  const handleQuantityChange = (event: { target: { value: string; }; }) => {
+    const novaQuantidade = parseInt(event.target.value);
+    setQuantity(novaQuantidade);
+  };
+
 
   return (
     <>
@@ -34,6 +41,18 @@ export default function Body() {
             src={TopImg}
             alt=''
           />
+          <div className='inputRadio'>
+            <div>
+              <p>Itens por pagina</p>
+            </div>
+            <div>
+              <select onChange={handleQuantityChange} value={quantity}>
+                <option value={16}>16</option>
+                <option value={20}>20</option>
+                <option value={32}>32</option>
+              </select>
+            </div>
+          </div>
           {products?.map((product, index) => (
             index < 16 && (
               <div
