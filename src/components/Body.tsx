@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
 import fetchProducts from '@/Api/fetchProducts';
-import TopImg from '../img/top-img.svg'
+import TopImg from '../img/top-img.svg';
 
-import Image from "next/image"
-import { useContext, useEffect, useState } from 'react';
+import Image from "next/image";
+import { Suspense, useContext, useEffect, useState } from 'react';
 import { SearchContext } from '@/contexts/SearchProvider';
 import formatCurrency from '@/utils/formatCurrency';
 import { useRouter } from 'next/navigation';
@@ -13,18 +13,16 @@ import Loading from './Loading';
 
 export default function Body() {
 
-  const router = useRouter()
+  const router = useRouter();
 
-  const {products , setProducts} = useContext(SearchContext)
-  const [loading, setLoading] = useState(true)
+  const { products, setProducts } = useContext(SearchContext);
   const [quantity, setQuantity] = useState(16);
 
   useEffect(() => {
     fetchProducts('iphone').then((response) => {
-      setProducts(response)
-      setLoading(false)
-    })
-  }, [setProducts])
+      setProducts(response);
+    });
+  }, [setProducts]);
 
   const handleQuantityChange = (event: { target: { value: string; }; }) => {
     const novaQuantidade = parseInt(event.target.value);
@@ -34,7 +32,7 @@ export default function Body() {
 
   return (
     <>
-      {(loading && <Loading/>) || 
+      <Suspense fallback={<Loading/>}>
         <section className="body-products">
           <Image
             className='top-img'
@@ -58,9 +56,9 @@ export default function Body() {
               <div
                 className='box-products'
                 onClick={() => router.push(`/Product/${product.id}`)}
-              key={product.id}>
+                key={product.id}>
                 <Image
-                  loader={({src}) => src}
+                  loader={({ src }) => src}
                   unoptimized={true}
                   width={200}
                   height={200}
@@ -84,9 +82,9 @@ export default function Body() {
             )
           ))}
         </section>
-      }  
+      </Suspense>
     </>
-  )
+  );
 }
 
 /*

@@ -123,7 +123,7 @@ const frete = 0
         <div className="freteBox">
           <h3>Frete e Prazos</h3>
           <div className="inputsFrete">
-            <input type="text" placeholder="Cep*" />
+            <input type="text" placeholder="Cep*" className="textCep" />
             <button className="btnCalcFrete">
               <Image
                 src={truck}

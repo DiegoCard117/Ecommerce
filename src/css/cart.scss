@@ -1,3 +1,4 @@
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,7 +7,6 @@ body {
 .containerCart {
   padding: 20px;
   width: 100%;
-  //min-width: 500px;
   z-index: 99;
 
   .MyCart {
@@ -40,7 +40,6 @@ body {
   }
 
   .boxResume {
-    //height: 300px;
     background: #D9D9D9;
     border-radius: 5px;
     display: flex;
@@ -108,7 +107,6 @@ body {
     background: #D9D9D9;
     height: 120px;
     border-radius: 5px;
-    width: 50%;
 
     .btnCartItem {
       z-index: 100;
@@ -182,6 +180,7 @@ body {
   }
 
   .freteBox {
+    width: 100%;
     border-radius: 5px;
     background: #D9D9D9;
     padding: 5px;
@@ -197,7 +196,15 @@ body {
       justify-content: space-between;
       margin: 0 5px ;
 
-      input, .btnCalcFrete {
+      .textCep {
+        width: 60%;
+      }
+
+      .btnCalcFrete {
+        width: 30%;
+      }
+
+      .textCep, .btnCalcFrete {
         background: #0c0c0c;
         padding: 5px 15px;
         color: #F1F2F5;
@@ -224,5 +231,6 @@ body {
     flex-direction: column;
     align-self: center;
     width: 50%;
+
   }
 }
