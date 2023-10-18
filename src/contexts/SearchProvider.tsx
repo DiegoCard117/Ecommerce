@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState, ReactNode, createContext, useContext } from "react";
 
@@ -16,8 +16,8 @@ interface Product {
   price: number;
   original_price: number;
   thumbnail: string;
-  products : Array<ProductProps>
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  products: Array<ProductProps>;
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
 interface ContextData {
@@ -31,7 +31,9 @@ interface SearchProviderProps {
   children: ReactNode;
 }
 
-export const SearchContext = createContext<ContextData | Product>({} as Product);
+export const SearchContext = createContext<ContextData | Product>(
+  {} as Product
+);
 
 export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -45,10 +47,8 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   };
 
   return (
-    <SearchContext.Provider value={value}>
-      {children}
-    </SearchContext.Provider>
+    <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
   );
-}
+};
 
-export const useSearchContext = () => useContext(SearchContext)
+export const useSearchContext = () => useContext(SearchContext);

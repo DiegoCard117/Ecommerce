@@ -1,19 +1,18 @@
-import '../css/globals.scss'
-import '../css/font.scss'
+import "../css/globals.scss";
+import "../css/font.scss";
 
-import { SearchProvider } from '@/contexts/SearchProvider'
+import { SearchProvider } from "@/contexts/SearchProvider";
 
-import { AuthContextProvider } from '@/contexts/AuthContext'
+import { AuthContextProvider } from "@/contexts/AuthContext";
 
-import { ShoppingCartProvider } from '@/contexts/CartContext'
+import { ShoppingCartProvider } from "@/contexts/CartContext";
 
-import '../services/firebase'
-
+import "../services/firebase";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <AuthContextProvider>
@@ -25,5 +24,5 @@ export default function RootLayout({
         </ShoppingCartProvider>
       </SearchProvider>
     </AuthContextProvider>
-  )
+  );
 }

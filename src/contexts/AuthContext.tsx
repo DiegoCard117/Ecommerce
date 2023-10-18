@@ -1,81 +1,79 @@
-'use client'
+"use client";
 
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { auth, firebase } from '../services/firebase'
+import { auth, firebase } from "../services/firebase";
 
 type User = {
-    id: string;
-    name: string;
-    avatar: string;
-  }
-  
-  type AuthContextType = {
-    user: User | null;
-    signInWithGoogle: () => Promise<void>;
-    signOut: () => Promise<void>;
-  }
-  
-  type AuthContextProviderProps = {
-    children: ReactNode
-  }
+  id: string;
+  name: string;
+  avatar: string;
+};
 
-export const AuthContext = createContext({} as AuthContextType)
+type AuthContextType = {
+  user: User | null;
+  signInWithGoogle: () => Promise<void>;
+  signOut: () => Promise<void>;
+};
 
-export function AuthContextProvider(props: AuthContextProviderProps ) {
+type AuthContextProviderProps = {
+  children: ReactNode;
+};
+
+export const AuthContext = createContext({} as AuthContextType);
+
+export function AuthContextProvider(props: AuthContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
 
-    useEffect( () => {
-      const unsubscribe = auth.onAuthStateChanged(user => {
-        if (user) {
-          const { displayName, photoURL, uid } = user
-         
-          
-          if (!displayName || !photoURL) {
-            throw new Error('Missing information from Google Account')
-          }
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        const { displayName, photoURL, uid } = user;
 
-          setUser({
-            id: uid,
-            name: displayName,
-            avatar: photoURL,
-          })
+        if (!displayName || !photoURL) {
+          throw new Error("Missing information from Google Account");
         }
-      })
 
-      return () => {
-        unsubscribe()
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL,
+        });
       }
-    }, [])
+    });
 
-    async function signInWithGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider()
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-      const result = await auth.signInWithPopup(provider)
+  async function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-          if (result.user) {
-            const { displayName, photoURL, uid } = result.user
-         
-          
-          if (!displayName || !photoURL) {
-            throw new Error('Missing information from Google Account')
-          }
+    const result = await auth.signInWithPopup(provider);
 
-          setUser({
-            id: uid,
-            name: displayName,
-            avatar: photoURL,
-          })
-        }
+    if (result.user) {
+      const { displayName, photoURL, uid } = result.user;
+
+      if (!displayName || !photoURL) {
+        throw new Error("Missing information from Google Account");
+      }
+
+      setUser({
+        id: uid,
+        name: displayName,
+        avatar: photoURL,
+      });
     }
+  }
 
-    async function signOut() {
-      await auth.signOut(); // Logout usando Firebase Authentication
-      setUser(null); // Atualiza o estado do usuário para null após o logout
-    }
+  async function signOut() {
+    await auth.signOut(); // Logout usando Firebase Authentication
+    setUser(null); // Atualiza o estado do usuário para null após o logout
+  }
 
-    return (
-        <AuthContext.Provider value={{ user, signInWithGoogle, signOut }}>
-            {props.children}
-        </AuthContext.Provider>
-    ) 
+  return (
+    <AuthContext.Provider value={{ user, signInWithGoogle, signOut }}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 }

@@ -1,10 +1,7 @@
-import Home from '@/app/Home/page';
+import Home from "@/app/Home/page";
 
-import '../services/firebase'
+import "../services/firebase";
 
 export default function App() {
-  return (
-      <Home/>
-  )
+  return <Home />;
 }
-

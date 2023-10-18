@@ -7,21 +7,20 @@ import Head from "next/head";
 import React from "react";
 
 function Home() {
-
   return (
     <>
       <Head>
         <title>Home | Ecommerce</title>
       </Head>
       <div className="containerHome">
-        <Header/>
-        <HeaderDesktop/>
-        <Body/>
-        <Aside/>
-        <Footer/>
+        <Header />
+        <HeaderDesktop />
+        <Body />
+        <Aside />
+        <Footer />
       </div>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
