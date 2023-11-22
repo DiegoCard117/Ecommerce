@@ -12,7 +12,6 @@ import american from "../../../img/american.svg";
 import pix from "../../../img/pix.svg";
 import master from "../../../img/master.svg";
 
-//import formatCurrency from '@/utils/formatCurrency';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -72,7 +71,6 @@ export default function Product({ params }: Props) {
         );
         const data = await response.json();
         setProducts(data);
-        //console.log(products)
         setLoading(false);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);

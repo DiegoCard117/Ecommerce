@@ -68,7 +68,7 @@ export default function Header() {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setText(event.target.value); // Atualize o estado text com o valor do campo de entrada
+    setText(event.target.value);
   };
 
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -98,7 +98,7 @@ export default function Header() {
                 <Image src={interrogaçao} alt="interrogaçao" />
                 <span>Fale Conosco</span>
               </Link>
-              <Link className="favorites btn-nav" href={""}>
+              <Link className="favorites btn-nav" href={"/Favorites"}>
                 <Image src={favorites} alt="favoritos" />
                 <span>Favoritos</span>
               </Link>

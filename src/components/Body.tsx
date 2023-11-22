@@ -18,7 +18,7 @@ export default function Body() {
   const [quantity, setQuantity] = useState(16);
 
   useEffect(() => {
-    fetchProducts("iphone").then((response) => {
+    fetchProducts("destaques").then((response) => {
       setProducts(response);
     });
   }, [setProducts]);
@@ -93,26 +93,3 @@ export default function Body() {
     </>
   );
 }
-
-/*
-
-        <div className='box-products'>
-          <Image
-            className='img-product'
-            src={graphic}
-            alt=''
-          />
-          <span className='name-product'>PLACA DE VIDEO MSI GEFORCE RTX 3050 GAMING X, 8GB, GDDR6, 128-BIT, 912-V397-423</span>
-          <span className='price-red'>
-            <span>de </span><span>R$ 3.203,74</span><span> por:</span>
-          </span>
-          <span className='green-price-product'>
-            <span className='green-span'>á vista </span>
-            <span className='price-green'>R$ 1.599,99</span>
-          </span>
-          <span className='span-parcel'>
-            em até 12x de 159,99 sem juros no cartão
-          </span>
-        </div>
-
-*/

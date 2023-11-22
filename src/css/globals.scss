@@ -463,7 +463,6 @@
       }
     }
   
-  
     .aside-desktop {
       grid-area: aside;
       display: flex;
@@ -475,7 +474,7 @@
         ul {
           padding: 20px 0;
           list-style-type: none;
-          height: 720px;
+          //height: 720px;
           display: flex;
           flex-direction: column;
           justify-content: space-around;

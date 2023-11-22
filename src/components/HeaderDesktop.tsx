@@ -7,11 +7,14 @@ import profile from "../img/profile-desktop.svg";
 import oque from "../img/interrogaçao-desktop.svg";
 import heart from "../img/heart-desktop.svg";
 import cart from "../img/cart-desktop.svg";
+
 import { SearchContext } from "@/contexts/SearchProvider";
 import fetchProducts from "@/Api/fetchProducts";
 import Link from "next/link";
 import { AuthContext } from "@/contexts/AuthContext";
 import { useShoppingCart } from "@/contexts/CartContext";
+
+import { useRouter } from "next/navigation";
 
 export default function HeaderDesktop() {
   const { cartItems } = useShoppingCart();
@@ -22,6 +25,8 @@ export default function HeaderDesktop() {
   const { user } = useContext(AuthContext);
 
   const [text, setText] = useState("");
+
+  const router = useRouter()
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,6 +47,7 @@ export default function HeaderDesktop() {
 
   const handleSearch = async () => {
     const products = await fetchProducts(text);
+    router.push('/')
     setProducts(products);
   };
 

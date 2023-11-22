@@ -1,3 +1,4 @@
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,12 +7,12 @@ body {
 .topPerfil {
   display: flex;
   flex-direction: column;
-  align-items:center ;
+  align-items: center;
   width: 100%;
   height: 130px;
   padding: 20px;
 
-  .btnGear{
+  .btnGear {
     background: transparent;
     display: flex;
     align-self: flex-end;
@@ -30,10 +31,11 @@ body {
   .name {
     font-size: 24px;
     font-weight: normal;
-    color: #F1F2F5;
+    color: #f1f2f5;
   }
 
-  .name, .avatar{
+  .name,
+  .avatar {
     z-index: 99;
   }
 }
@@ -50,7 +52,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: start;
-    background: #F1F2F5;
+    background: #f1f2f5;
     font-size: 14px;
     border-radius: 5px;
     padding: 2px 6px;
@@ -58,17 +60,16 @@ body {
 
   .boxResume {
     margin: 10px 0px;
-    background: #F1F2F5;
+    background: #f1f2f5;
     padding: 15px;
     border-radius: 5px;
     display: grid;
     row-gap: 15px;
     grid-template-areas:
-      'pedido data'
-      'status status'
-      'pagamento pagamento'
-      'endereço endereço'
-    ;
+      "pedido data"
+      "status status"
+      "pagamento pagamento"
+      "endereço endereço";
     .pedido {
       grid-area: pedido;
     }
@@ -94,8 +95,9 @@ body {
     }
   }
 
-  .todosPedidos, .signOut {
-    background: #F1F2F5;
+  .todosPedidos,
+  .signOut {
+    background: #f1f2f5;
     border-radius: 5px;
     width: fit-content;
     padding: 10px 20px;
@@ -109,5 +111,13 @@ body {
     display: flex;
     align-self: flex-end;
     color: red;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .body {
+    display: grid;
+    place-self:  center;
+    min-width: 60%;
   }
 }
